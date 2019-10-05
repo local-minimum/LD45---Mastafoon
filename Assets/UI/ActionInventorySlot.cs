@@ -63,6 +63,17 @@ public class ActionInventorySlot : MonoBehaviour
         ResetActionPoint();
     }
 
+    public void ClearItem()
+    {
+        if (item)
+        {
+            inventoryItem.sprite = null;
+            inventoryItem.gameObject.SetActive(false);
+            Destroy(item.gameObject);
+            item = null;
+        }
+    }
+
     public Item DropItem(bool defaultToAvailable=true)
     {
         Item item = this.item;

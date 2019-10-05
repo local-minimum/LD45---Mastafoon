@@ -13,6 +13,15 @@ public class WorldClock : MonoBehaviour
     Turn nextTurn = Turn.Player;
 
     [SerializeField] float tickTime = 3f;
+    int turns = 1;
+
+    public int turnsTaken
+    {
+        get
+        {
+            return turns;
+        }
+    }
 
     private void Start()
     {
@@ -30,6 +39,7 @@ public class WorldClock : MonoBehaviour
 
     public void GiveTurnTo(Turn turn)
     {
-        this.nextTurn = turn;
+        nextTurn = turn;
+        turns++;
     }
 }

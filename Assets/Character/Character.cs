@@ -5,9 +5,18 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     [SerializeField] WorldClock worldClock;
-    [SerializeField] ActionsInventory actionsInventory;
     [SerializeField] Location start;
+    ActionsInventory actionsInventory;
     Location location;
+    int steps = 0;
+
+    public int stepsTaken
+    {
+        get
+        {
+            return steps;
+        }
+    }
 
     public Location GetLocation()
     {
@@ -16,6 +25,7 @@ public class Character : MonoBehaviour
 
     void Start()
     {
+        actionsInventory = FindObjectOfType<ActionsInventory>();
         location = start;
         location.PlaceCharacter(this);
     }
@@ -37,6 +47,13 @@ public class Character : MonoBehaviour
         {
             if (turn == Turn.Player) actionsInventory.NewTurn();
             lastTurn = turn;            
+        } else if (turn == Turn.Player)
+        {
+            if (actionsInventory.remainingActions == 0)
+            {
+                worldClock.GiveTurnTo(Turn.Enemies);
+                actionsInventory.EnemyTurn();
+            }
         }
     }
     
@@ -72,6 +89,7 @@ public class Character : MonoBehaviour
             {
                 location = nextLocation;
                 actionsInventory.UseAction();
+                steps++;
                 Item item = location.GetItem();
                 if (item && actionsInventory.canPickUp)
                 {

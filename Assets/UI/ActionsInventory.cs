@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ActionsInventory : MonoBehaviour
 {
-    [SerializeField] Character character;
+    Character _character;
     [SerializeField] Image foreground;
     [SerializeField] Color activeColor;
     [SerializeField] Color inactiveColor;
@@ -13,9 +13,35 @@ public class ActionsInventory : MonoBehaviour
     ActionInventorySlot[] slots;    
 
     void Start()
-    {
+    {        
         slots = GetComponentsInChildren<ActionInventorySlot>();
         NewTurn();
+    }
+
+    public void ForgetCharacter()
+    {
+        _character = null;
+    }
+
+    public void ClearInventory()
+    {
+        if (slots == null) return;
+        for (int action=0; action<slots.Length; action++)
+        {
+            slots[action].ClearItem();
+        }
+    }
+
+    Character character
+    {
+        get
+        {
+            if (_character == null)
+            {
+                _character = FindObjectOfType<Character>();
+            }
+            return _character;
+        }
     }
 
     public bool canPickUp
@@ -86,7 +112,7 @@ public class ActionsInventory : MonoBehaviour
 
     public void UseAction()
     {
-        for (int action=0; action <= slots.Length; action++)
+        for (int action=0; action < slots.Length; action++)
         {
             if (slots[action].UseActionPoint()) break;
         }
@@ -104,5 +130,13 @@ public class ActionsInventory : MonoBehaviour
     public void EnemyTurn()
     {
         foreground.color = inactiveColor;
+    }
+
+    public void EndTurn()
+    {
+        for (int action = 0; action < slots.Length; action++)
+        {
+            slots[action].UseActionPoint();
+        }
     }
 }

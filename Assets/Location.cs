@@ -175,7 +175,9 @@ public class Location : MonoBehaviour
 
     public void KillCharacter()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        int turns = FindObjectOfType<WorldClock>().turnsTaken;
+        int steps = GetComponentInChildren<Character>().stepsTaken;
+        FindObjectOfType<SessionManager>().KillCharacter(steps, turns);
     }
 
     void Update()
