@@ -1946,7 +1946,7 @@ MonoBehaviour:
   character: {fileID: 271694736}
   foreground: {fileID: 1454693602}
   activeColor: {r: 0.050980393, g: 1, b: 0.79607844, a: 0}
-  inactiveColor: {r: 0.038047336, g: 0.4245283, b: 0.34148285, a: 0.38431373}
+  inactiveColor: {r: 0.038047336, g: 0.4245283, b: 0.34148285, a: 0.5647059}
 --- !u!1 &391864102
 GameObject:
   m_ObjectHideFlags: 0
