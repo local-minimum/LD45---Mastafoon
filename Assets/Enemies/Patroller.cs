@@ -14,7 +14,8 @@ public class Patroller : Enemy
 
     [SerializeField] List<string> aftraidOf = new List<string>();
     [SerializeField] PatrollerPattern pattern;
-
+    [SerializeField] string wakupMessage;
+    bool emittedMesasge;
     private void Start()
     {
         heading = startHeading;
@@ -22,6 +23,22 @@ public class Patroller : Enemy
 
     public override void Act()
     {
+        if (!string.IsNullOrEmpty(wakupMessage))
+        {
+            if (remainingActionPoints == actionsPerTurn)
+            {
+                if (!emittedMesasge)
+                {
+                    FindObjectOfType<Narrator>().ShowPieceByKey(wakupMessage);
+                    emittedMesasge = true;
+                }
+                else
+                {
+                    FindObjectOfType<Narrator>().ClearDisplay(wakupMessage);
+                    wakupMessage = "";
+                }
+            }            
+        }
         for (int i=0; i<4; i++)
         {
             if (Walk()) break;

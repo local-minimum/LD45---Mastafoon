@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
+    [SerializeField] string _firstPickup;
+
+    public string firstPickup { get { return _firstPickup; } }
+    public bool firstPickupEmitted { get; set; }
+
     public Sprite sprite
     {
         get

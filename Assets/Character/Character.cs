@@ -6,7 +6,9 @@ public class Character : MonoBehaviour
 {
     [SerializeField] WorldClock worldClock;
     [SerializeField] Location start;
+    [SerializeField] string messageOnLoad;
     ActionsInventory actionsInventory;
+    Narrator narrator;
     Location location;
     int steps = 0;
 
@@ -26,8 +28,10 @@ public class Character : MonoBehaviour
     void Start()
     {
         actionsInventory = FindObjectOfType<ActionsInventory>();
+        narrator = FindObjectOfType<Narrator>();
         location = start;
         location.PlaceCharacter(this);
+        if (!string.IsNullOrEmpty(messageOnLoad)) narrator.ShowPieceByKey(messageOnLoad);
     }
 
     private void OnEnable()

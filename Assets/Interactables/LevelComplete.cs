@@ -5,6 +5,7 @@ using UnityEngine;
 public class LevelComplete : Interactable
 {
     [SerializeField] WorldClock worldClock;
+    [SerializeField] Vector2Int offset;
 
     SessionManager session;
     private void Start()
@@ -14,8 +15,14 @@ public class LevelComplete : Interactable
 
     public override int Activate(Location location, Vector2Int offset)
     {
-        Character character = location.GetComponent<Character>();
-        session.ReportLevelCompleted(character.stepsTaken, worldClock.turnsTaken);
-        return 1;
+        if (offset == this.offset)
+        {
+            Character character = location.GetComponentInChildren<Character>();
+            int steps = character.stepsTaken;
+            int turns = worldClock.turnsTaken;
+            session.ReportLevelCompleted(steps, turns);
+            return 1;
+        }
+        return 0;
     }
 }
