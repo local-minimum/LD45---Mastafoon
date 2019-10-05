@@ -22,13 +22,11 @@ public class EnemyManager : MonoBehaviour
         worldClock.OnTick -= WorldClock_OnTick;
     }
 
-    Turn previousTurn = Turn.Player;
-
-    private void WorldClock_OnTick(Turn turn)
+    private void WorldClock_OnTick(Turn turn, bool changeOfTurn)
     {
         if (turn == Turn.Enemies)
         {
-            if (previousTurn != turn)
+            if (changeOfTurn)
             {
                 ResetTicks();
             }
@@ -37,7 +35,6 @@ public class EnemyManager : MonoBehaviour
                 worldClock.GiveTurnTo(Turn.Player);
             }
         }
-        previousTurn = turn;
     }
 
     void ResetTicks()

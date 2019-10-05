@@ -44,15 +44,13 @@ public class Character : MonoBehaviour
         worldClock.OnTick -= WorldClock_OnTick;
     }
 
-    Turn lastTurn = Turn.Player;
-    private void WorldClock_OnTick(Turn turn)
+
+    private void WorldClock_OnTick(Turn turn, bool changeOfTurn)
     {
-        if (lastTurn != turn)
+
+        if (turn == Turn.Player)
         {
-            if (turn == Turn.Player) actionsInventory.NewTurn();
-            lastTurn = turn;            
-        } else if (turn == Turn.Player)
-        {
+            if (changeOfTurn) actionsInventory.NewTurn();
             if (actionsInventory.remainingActions == 0)
             {
                 worldClock.GiveTurnTo(Turn.Enemies);

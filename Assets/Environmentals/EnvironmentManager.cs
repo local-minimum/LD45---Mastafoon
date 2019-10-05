@@ -22,7 +22,7 @@ public class EnvironmentManager : MonoBehaviour
         worldClock.OnTick -= WorldClock_OnTick;
     }
 
-    private void WorldClock_OnTick(Turn turn)
+    private void WorldClock_OnTick(Turn turn, bool changeOfTurn)
     {
         for (int i=0,l=environmentals.Count; i<l; i++)
         {
