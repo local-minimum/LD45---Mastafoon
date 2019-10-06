@@ -7,7 +7,9 @@ public enum LiveUpdate { LocationToPosition, PositionToLocation, None}
 [ExecuteInEditMode]
 public class Location : MonoBehaviour
 {
-    Interactable interactable;    
+    WorldClock worldClock;
+    Interactable interactable;
+
     [SerializeField] LiveUpdate updateMode;
     Item item;
 
@@ -16,10 +18,11 @@ public class Location : MonoBehaviour
     Grid grid;
 
     [SerializeField]
-    List<Location> neighbours = new List<Location>();    
+    List<Location> neighbours = new List<Location>();
 
     private void OnEnable()
     {
+        worldClock = FindObjectOfType<WorldClock>();
         item = GetComponentInChildren<Item>();
         if (item) PlaceItem(item);
         Character character = GetComponentInChildren<Character>();
@@ -29,9 +32,9 @@ public class Location : MonoBehaviour
         grid = GetComponentInParent<Grid>();
     }
 
-    
+
     void SetWorldFromGridPosition()
-    {        
+    {
         transform.position = grid.CellToWorld(gridPosition) + grid.cellSize * 0.5f;
     }
 
@@ -43,10 +46,10 @@ public class Location : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.black;
-        Gizmos.DrawCube(transform.position, Vector3.one*0.2f);
+        Gizmos.DrawCube(transform.position, Vector3.one * 0.2f);
         bool missingNeighbour = false;
-        for (int i=0,l=neighbours.Count; i<l; i++)
-        {            
+        for (int i = 0, l = neighbours.Count; i < l; i++)
+        {
             if (neighbours[i] == null)
             {
                 missingNeighbour = true;
@@ -54,15 +57,15 @@ public class Location : MonoBehaviour
             {
                 Gizmos.color = neighbours[i].neighbours.Contains(this) ? Color.white : Color.cyan;
                 Gizmos.DrawLine(transform.position, neighbours[i].transform.position);
-            }            
+            }
         }
         if (missingNeighbour)
         {
             neighbours.RemoveAll(neighbour => neighbour == null);
-        }        
+        }
     }
 
-    public void AddNeighbour(Location neighbour, bool bidirectional=true)
+    public void AddNeighbour(Location neighbour, bool bidirectional = true)
     {
         if (!neighbours.Contains(neighbour))
         {
@@ -88,7 +91,7 @@ public class Location : MonoBehaviour
     public Location GetNeighbour(Vector2Int offset)
     {
         if (offset == Vector2Int.zero) return null;
-        for (int i=0, l=neighbours.Count; i<l; i++)
+        for (int i = 0, l = neighbours.Count; i < l; i++)
         {
             Location neighbour = neighbours[i];
             Vector3Int neighbourOffset = neighbour.gridPosition - gridPosition;
@@ -132,10 +135,27 @@ public class Location : MonoBehaviour
         if (!hasEnemyOrCharacter(enemy))
         {
             enemy.transform.SetParent(transform);
-            enemy.transform.localPosition = Vector3.zero;
+            StartCoroutine(_AnimateEnemyTransition(enemy.transform));
             return true;
         }
         return false;
+    }
+
+    IEnumerator<WaitForSeconds> _AnimateEnemyTransition(Transform enemyTrans){
+        float start = Time.timeSinceLevelLoad;
+        float duration = worldClock.enemyMoveDuration * worldClock.tickDuration;
+        if (duration > 0)
+        {
+            float progress = 0;
+            Vector3 startPos = enemyTrans.position;
+            while (progress < 1f)
+            {
+                yield return new WaitForSeconds(0.02f);
+                progress = Mathf.Min((Time.timeSinceLevelLoad - start) / duration, 1);
+                enemyTrans.position = Vector3.Lerp(startPos, transform.position, worldClock.enemyMoveEase.Evaluate(progress));
+            }
+        }
+        enemyTrans.localPosition = Vector3.zero;
     }
 
     bool hasEnemyOrCharacter(Enemy enemy)
