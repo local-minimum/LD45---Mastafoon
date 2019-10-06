@@ -94,10 +94,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50774a2f5be84bd46ac7a0d62dffc893, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  narrateOnTurn: 
+  probabilityToNarrate: 0
   actionsPerTurn: 7
   startHeading: {x: 0, y: 1}
   heading: {x: 0, y: 0}
-  aftraidOf:
+  afraidOf:
   - Spider
+  afraidMsg:
+  - patroller-trds-spider
   pattern: 1
   wakupMessage: patroller-trds-intro

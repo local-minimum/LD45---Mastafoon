@@ -12,7 +12,9 @@ public class Patroller : Enemy
     [SerializeField]
     Vector2Int heading;
 
-    [SerializeField] List<string> aftraidOf = new List<string>();
+    [SerializeField] List<string> afraidOf = new List<string>();
+    [SerializeField] List<string> afraidMsg = new List<string>();
+
     [SerializeField] PatrollerPattern pattern;
     [SerializeField] string wakupMessage;
     bool emittedMesasge;
@@ -57,7 +59,9 @@ public class Patroller : Enemy
         if (neighbour)
         {
             Item item = neighbour.GetItem();
-            if (item && aftraidOf.Contains(item.tag) && !CaptureCharacter(neighbour) || !MoveTo(neighbour))
+            bool afraid = item != null && afraidOf.Contains(item.tag);
+            if (afraid) EmitAfraidMessage(item.tag);
+            if (afraid && !CaptureCharacter(neighbour) || !MoveTo(neighbour))
             {
                 Turn();
                 return false;
@@ -66,6 +70,14 @@ public class Patroller : Enemy
         }
         Turn();
         return false;
+    }
+
+    void EmitAfraidMessage(string tag)
+    {
+        int pos = afraidOf.IndexOf(tag);
+        if (pos >= afraidMsg.Count) return;
+        string msg = afraidMsg[pos];
+        if (!string.IsNullOrEmpty(msg)) Narrator.ShowPieceByKey(msg);
     }
 
     Vector2Int GetTurnHeading(PatrollerPattern pattern)
