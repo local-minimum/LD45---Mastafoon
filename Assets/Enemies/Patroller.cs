@@ -125,7 +125,6 @@ public class Patroller : Enemy
         {
             if (heading != nextHeading)
             {
-                Debug.Log(nextHeading);
                 SetWalkAnimFromHeading(nextHeading);
             }
             heading = nextHeading;
