@@ -47,5 +47,10 @@ public abstract class Enemy : MonoBehaviour
         return nextLocation.hasCharacter;
     }
 
+    protected Location AttemptCapture(int maxDistance)
+    {
+        List<Location> path = location.FindPathToCharacter(maxDistance);
+        return path == null ? null : path[0];
 
+    }
 }

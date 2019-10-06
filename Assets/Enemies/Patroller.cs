@@ -47,6 +47,12 @@ public class Patroller : Enemy
 
     bool Walk()
     {
+        int maxSearchDistance = 1;
+        Location characterTrail = AttemptCapture(maxSearchDistance);
+        if (characterTrail)
+        {
+            heading = location.HeadingTo(characterTrail);
+        }
         Location neighbour = location.GetNeighbour(heading);
         if (neighbour)
         {

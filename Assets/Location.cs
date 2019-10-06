@@ -216,4 +216,54 @@ public class Location : MonoBehaviour
         gameObject.name = string.Format("Node {0}, {1}", gridPosition.x, gridPosition.y);
 #endif
     }
+
+    public List<Location> FindPathToCharacter(int maxDistance)
+    {
+        return FindPathTo(loc => loc.hasCharacter, maxDistance);
+    }
+
+    public List<Location> FindPathTo(System.Func<Location, bool> targetCheck, int maxDistance)
+    {
+        List<Location> seen = new List<Location>();
+        seen.Add(this);
+        Queue<List<Location>> paths = new Queue<List<Location>>();
+        Location currentLocation = this;
+        List<Location> currentPath = new List<Location>();
+        while (true)
+        {
+            foreach(List<Location> path in currentLocation.Neighbours(currentPath, seen))
+            {
+                Location possibleTarget = path[path.Count - 1];
+                if (targetCheck(possibleTarget))
+                {
+                    return path;
+                }
+                seen.Add(possibleTarget);
+                if (maxDistance < 0 || path.Count < maxDistance) paths.Enqueue(path);
+            }
+
+            if (paths.Count == 0) break;
+            currentPath = paths.Dequeue();
+            currentLocation = currentPath[currentPath.Count - 1];
+        }
+        return null;
+    }
+
+    IEnumerable<List<Location>> Neighbours(List<Location> path, List<Location> seen)
+    {
+        for (int i=0, l=neighbours.Count; i<l; i++)
+        {
+            Location neighbour = neighbours[i];
+            if (seen.Contains(neighbour)) continue;
+            List<Location> currentPath = new List<Location>(path);
+            currentPath.Add(neighbour);
+            yield return currentPath;
+        }
+    }
+
+    public Vector2Int HeadingTo(Location other)
+    {
+        Vector3Int offset = other.gridPosition - gridPosition;
+        return new Vector2Int(offset.x, offset.y);
+    }
 }
