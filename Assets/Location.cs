@@ -21,7 +21,9 @@ public class Location : MonoBehaviour
     private void OnEnable()
     {
         item = GetComponentInChildren<Item>();
-        if (item) PlaceItem(item);        
+        if (item) PlaceItem(item);
+        Character character = GetComponentInChildren<Character>();
+        if (character) PlaceCharacter(character);
         grid = GetComponentInParent<Grid>();
     }
 
@@ -123,7 +125,7 @@ public class Location : MonoBehaviour
 
     public bool PlaceEnemy(Enemy enemy)
     {
-        if (!hasEnemyOrCharacter)
+        if (!hasEnemyOrCharacter(enemy))
         {
             enemy.transform.SetParent(transform);
             enemy.transform.localPosition = Vector3.zero;
@@ -132,13 +134,19 @@ public class Location : MonoBehaviour
         return false;
     }
 
-    bool hasEnemyOrCharacter
+    bool hasEnemyOrCharacter(Enemy enemy)
     {
-        get
-        {
-            return GetComponentInChildren<Enemy>() || GetComponentInChildren<Character>();
-        }
+        Enemy existing = GetComponentInChildren<Enemy>();
+        return GetComponentInChildren<Character>() || existing != null && existing != enemy;        
     }
+
+    bool hasEnemyOrCharacter(Character character)
+    {
+        Character existing = GetComponentInChildren<Character>();
+        return GetComponentInChildren<Enemy>() || existing != null && existing != character;
+    }
+
+
     public bool hasCharacter
     {
         get
@@ -149,7 +157,7 @@ public class Location : MonoBehaviour
 
     public bool PlaceCharacter(Character character)
     {
-        if (!hasEnemyOrCharacter)
+        if (!hasEnemyOrCharacter(character))
         {
             character.transform.SetParent(transform);
             character.transform.localPosition = Vector3.zero;

@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelComplete : Interactable
-{
-    [SerializeField] WorldClock worldClock;
+{    
     [SerializeField] Vector2Int offset;
 
     SessionManager session;
@@ -19,7 +18,7 @@ public class LevelComplete : Interactable
         {
             Character character = location.GetComponentInChildren<Character>();
             int steps = character.stepsTaken;
-            int turns = worldClock.turnsTaken;
+            int turns = FindObjectOfType<WorldClock>().turnsTaken;
             session.ReportLevelCompleted(steps, turns);
             return 1;
         }

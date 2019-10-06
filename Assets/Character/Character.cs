@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    [SerializeField] WorldClock worldClock;
-    [SerializeField] Location start;
+    WorldClock worldClock;
     [SerializeField] string messageOnLoad;
     ActionsInventory actionsInventory;
     Narrator narrator;
@@ -27,14 +26,15 @@ public class Character : MonoBehaviour
 
     void Start()
     {
-        actionsInventory = FindObjectOfType<ActionsInventory>();        
-        location = start;
+        actionsInventory = FindObjectOfType<ActionsInventory>();
+        location = GetComponentInParent<Location>();
         location.PlaceCharacter(this);
         if (!string.IsNullOrEmpty(messageOnLoad)) Narrator.ShowPieceByKey(messageOnLoad);
     }
 
     private void OnEnable()
     {
+        if (worldClock == null) worldClock = FindObjectOfType<WorldClock>();
         worldClock.OnTick += WorldClock_OnTick;
     }
 
