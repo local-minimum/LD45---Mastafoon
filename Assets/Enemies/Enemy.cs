@@ -6,6 +6,12 @@ public abstract class Enemy : MonoBehaviour
 {
     protected Location location;
 
+    [SerializeField]
+    string narrateOnTurn;
+    [SerializeField, Range(0, 1)]
+    float probabilityToNarrate;
+    
+
     private void Awake()
     {
         location = GetComponentInParent<Location>();
@@ -21,6 +27,12 @@ public abstract class Enemy : MonoBehaviour
     }
     public bool Tick() {
         if (remainingActionPoints == 0) return false;
+        if (remainingActionPoints == actionsPerTurn) Narrator.ClearDisplay(narrateOnTurn);
+        if (
+            Random.value < probabilityToNarrate
+            && !string.IsNullOrEmpty(narrateOnTurn)
+            && remainingActionPoints == actionsPerTurn
+        ) Narrator.ShowPieceByKey(narrateOnTurn);
         Act();
         remainingActionPoints -= 1;
         return true;

@@ -6,8 +6,7 @@ public class StartCellDoor : Interactable
 {
     [SerializeField] Location openFrom;
     [SerializeField] Location openTo;
-    bool isClosed = true;
-    [SerializeField] GameObject shownWhenOpen;
+    bool isClosed = true;    
     [SerializeField] GameObject worldDoor;
     [SerializeField] GameObject[] roomsToActivate;
     [SerializeField] string[] dialogues;
@@ -15,7 +14,6 @@ public class StartCellDoor : Interactable
 
     private void Awake()
     {
-        shownWhenOpen.SetActive(!isClosed);
         worldDoor.SetActive(isClosed);
         for (int i=0; i<roomsToActivate.Length; i++)
         {
@@ -34,7 +32,6 @@ public class StartCellDoor : Interactable
             {
                 Narrator.ClearDisplay();
                 openFrom.AddNeighbour(openTo);
-                shownWhenOpen.SetActive(true);
                 isClosed = false;
                 for (int i = 0; i < roomsToActivate.Length; i++)
                 {

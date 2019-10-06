@@ -7,7 +7,7 @@ public enum LiveUpdate { LocationToPosition, PositionToLocation, None}
 [ExecuteInEditMode]
 public class Location : MonoBehaviour
 {
-    [SerializeField] Interactable interactable;    
+    Interactable interactable;    
     [SerializeField] LiveUpdate updateMode;
     Item item;
 
@@ -24,16 +24,18 @@ public class Location : MonoBehaviour
         if (item) PlaceItem(item);
         Character character = GetComponentInChildren<Character>();
         if (character) PlaceCharacter(character);
+        Enemy enemy = GetComponentInChildren<Enemy>();
+        if (enemy) PlaceEnemy(enemy);
         grid = GetComponentInParent<Grid>();
     }
 
     
-    void SetWorldPosition()
+    void SetWorldFromGridPosition()
     {        
         transform.position = grid.CellToWorld(gridPosition) + grid.cellSize * 0.5f;
     }
 
-    void SetLocationFromPosition()
+    void SetGridPositionFromWorld()
     {
         gridPosition = grid.WorldToCell(transform.position - grid.cellSize * 0.5f);
     }
@@ -42,7 +44,6 @@ public class Location : MonoBehaviour
     {
         Gizmos.color = Color.black;
         Gizmos.DrawCube(transform.position, Vector3.one*0.2f);
-        Gizmos.color = Color.white;
         bool missingNeighbour = false;
         for (int i=0,l=neighbours.Count; i<l; i++)
         {            
@@ -51,6 +52,7 @@ public class Location : MonoBehaviour
                 missingNeighbour = true;
             } else
             {
+                Gizmos.color = neighbours[i].neighbours.Contains(this) ? Color.white : Color.cyan;
                 Gizmos.DrawLine(transform.position, neighbours[i].transform.position);
             }            
         }
@@ -69,10 +71,12 @@ public class Location : MonoBehaviour
             {
                 if (!neighbour.neighbours.Contains(this)) neighbour.neighbours.Add(this);
             }
-        } else
-        {
-            Debug.LogWarning(string.Format("Attempting add already existing neighbour {0} to {1}", neighbour.name, name));
         }
+    }
+
+    public void ClearNeighbours()
+    {
+        neighbours.Clear();
     }
 
     public bool IsProximate(Location neighbour)
@@ -194,10 +198,10 @@ public class Location : MonoBehaviour
 #if UNITY_EDITOR
         if (updateMode == LiveUpdate.LocationToPosition)
         {
-            SetWorldPosition();
+            SetWorldFromGridPosition();
         } else if (updateMode == LiveUpdate.PositionToLocation)
         {
-            SetLocationFromPosition();
+            SetGridPositionFromWorld();
         }
         Interactable interactable = GetComponentInChildren<Interactable>();
         if (interactable && interactable != this.interactable)
@@ -210,6 +214,8 @@ public class Location : MonoBehaviour
                 this.interactable = interactable;
                 interactable.transform.localPosition = Vector3.zero;
             }
+        } else if (interactable == null && this.interactable) {
+            this.interactable = null;
         }
         Item item = GetComponentInChildren<Item>();
         if (item && item != this.item)

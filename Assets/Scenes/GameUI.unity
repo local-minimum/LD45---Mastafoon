@@ -203,7 +203,9 @@ MonoBehaviour:
   levels:
   - TestLevel
   - Level 1
-  currentLevel: 1
+  - Level 2
+  - Level 3
+  currentLevel: 2
   inventory: {fileID: 1654044748}
 --- !u!1001 &822854196
 PrefabInstance:
@@ -677,12 +679,15 @@ MonoBehaviour:
     profilePicture: {fileID: -8312420563691395660, guid: 649de03a7f2a2e041a0e0a8a3524c1f5,
       type: 3}
     characterName: ToRaaDuS
-    body: <i>Scanning...<br>No prisoner in sight<br>Scanning...<br>Iiih!<br>Was that
-      a...<br>...spider?!</i>
+    body: <i>Scanning...<br>No prisoner in sight
   - key: spider-intro
     profilePicture: {fileID: 21300000, guid: 17ed4a17e67f1f945af2e6448298a87a, type: 3}
     characterName: Mastafoon
     body: <i>Hello friend spider!<br>Why do you have so many legs?<br>And eyes?</i>
+  - key: patroller-trds-spider
+    profilePicture: {fileID: 21300000, guid: 17ed4a17e67f1f945af2e6448298a87a, type: 3}
+    characterName: Mastafoon
+    body: <i><br>Scanning...<br>Iiih!<br>Was that a...<br>...spider?!</i>
   profilePicture: {fileID: 1937448065}
   characterName: {fileID: 1256018345}
   body: {fileID: 2015686608}

@@ -98,11 +98,18 @@ public class Patroller : Enemy
         if (SetHeadingIfExists(pattern)) return;
         if (pattern != PatrollerPattern.TurnLeft)
         {
-            if (SetHeadingIfExists(PatrollerPattern.TurnLeft)) return;
+            if (SetHeadingIfExists(PatrollerPattern.TurnLeft))
+            {
+                pattern = PatrollerPattern.TurnLeft;
+                return;
+            }
         }
         if (pattern != PatrollerPattern.TurnRight)
         {
-            if (SetHeadingIfExists(PatrollerPattern.TurnRight)) return;
+            if (SetHeadingIfExists(PatrollerPattern.TurnRight)) {
+                pattern = PatrollerPattern.TurnRight;
+                return;
+            }
         }
         if (pattern != PatrollerPattern.Bounce)
         {

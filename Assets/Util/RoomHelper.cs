@@ -7,6 +7,8 @@ public class RoomHelper : MonoBehaviour
 {
     [SerializeField]
     bool connectLocations = false;
+    [SerializeField]
+    bool clearConnections = false;
 
     void ConnectLocations()
     {
@@ -21,12 +23,31 @@ public class RoomHelper : MonoBehaviour
                 {
                     location.AddNeighbour(neighbour);
                 }
+                if (location.HeadingTo(neighbour) == Vector2Int.zero)
+                {
+                    Debug.LogError(string.Format("Two locations with same position {0}", neighbour));
+                }
             }
         }
     }
 
+    void ClearAllConnections()
+    {
+        Location[] locations = GetComponentsInChildren<Location>();
+        for (int i = 0; i < locations.Length; i++)
+        {
+            locations[i].ClearNeighbours();
+        }
+
+    }
+
     void Update()
     {
+        if (clearConnections)
+        {
+            clearConnections = false;
+            ClearAllConnections();
+        }
         if (connectLocations)
         {
             connectLocations = false;
