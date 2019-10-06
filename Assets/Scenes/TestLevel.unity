@@ -151,7 +151,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 1
-  item: {fileID: 0}
   gridPosition: {x: -5, y: 0, z: 0}
   neighbours:
   - {fileID: 926396116}
@@ -201,7 +200,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 1
-  item: {fileID: 0}
   gridPosition: {x: -1, y: -3, z: 0}
   neighbours:
   - {fileID: 1082817266}
@@ -252,7 +250,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 1
-  item: {fileID: 0}
   gridPosition: {x: -5, y: -4, z: 0}
   neighbours:
   - {fileID: 1255521175}
@@ -302,7 +299,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 1
-  item: {fileID: 0}
   gridPosition: {x: -2, y: 2, z: 0}
   neighbours:
   - {fileID: 1418714037}
@@ -354,7 +350,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 1
-  item: {fileID: 0}
   gridPosition: {x: -4, y: -3, z: 0}
   neighbours:
   - {fileID: 1039168790}
@@ -369,7 +364,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -3.5, y: -2.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 240613147}
   m_Father: {fileID: 1409614757}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -404,7 +400,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 1
-  item: {fileID: 0}
   gridPosition: {x: -1, y: 0, z: 0}
   neighbours:
   - {fileID: 205603017}
@@ -470,7 +465,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 0
-  item: {fileID: 0}
   gridPosition: {x: -8, y: 0, z: 0}
   neighbours:
   - {fileID: 1190765100}
@@ -521,7 +515,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 0
-  item: {fileID: 0}
   gridPosition: {x: -6, y: -4, z: 0}
   neighbours:
   - {fileID: 966579712}
@@ -557,7 +550,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 1
-  item: {fileID: 0}
   gridPosition: {x: -5, y: 3, z: 0}
   neighbours:
   - {fileID: 1481876672}
@@ -607,7 +599,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 1
-  item: {fileID: 0}
   gridPosition: {x: -1, y: -1, z: 0}
   neighbours:
   - {fileID: 1093546220}
@@ -659,7 +650,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 0
-  item: {fileID: 0}
   gridPosition: {x: -8, y: -1, z: 0}
   neighbours:
   - {fileID: 732108260}
@@ -677,6 +667,101 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1041543529}
   m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &240613144
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 240613147}
+  - component: {fileID: 240613146}
+  - component: {fileID: 240613145}
+  m_Layer: 0
+  m_Name: Beacon (1)
+  m_TagString: Beacon
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &240613145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240613144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28f6057f62e3c844f833ab5651bd7dc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _firstPickup: 
+--- !u!212 &240613146
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240613144}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 1987509777
+  m_SortingLayer: 1
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 5502269439739279523, guid: 649de03a7f2a2e041a0e0a8a3524c1f5,
+    type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &240613147
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240613144}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 67495711}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &249976550
 GameObject:
@@ -1012,7 +1097,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 1
-  item: {fileID: 0}
   gridPosition: {x: -2, y: -4, z: 0}
   neighbours:
   - {fileID: 790958982}
@@ -1107,7 +1191,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 1
-  item: {fileID: 0}
   gridPosition: {x: -5, y: 1, z: 0}
   neighbours:
   - {fileID: 15097383}
@@ -1158,7 +1241,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 1
-  item: {fileID: 0}
   gridPosition: {x: 1, y: -2, z: 0}
   neighbours:
   - {fileID: 1053043233}
@@ -1223,7 +1305,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 0
-  item: {fileID: 0}
   gridPosition: {x: -7, y: 1, z: 0}
   neighbours:
   - {fileID: 1190765100}
@@ -1450,7 +1531,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 1
-  item: {fileID: 0}
   gridPosition: {x: -4, y: -4, z: 0}
   neighbours:
   - {fileID: 21083974}
@@ -1500,7 +1580,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 1
-  item: {fileID: 0}
   gridPosition: {x: -1, y: 2, z: 0}
   neighbours:
   - {fileID: 49361153}
@@ -1550,7 +1629,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 1
-  item: {fileID: 0}
   gridPosition: {x: 0, y: -2, z: 0}
   neighbours:
   - {fileID: 1082817266}
@@ -1601,7 +1679,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 1
-  item: {fileID: 0}
   gridPosition: {x: -2, y: -1, z: 0}
   neighbours:
   - {fileID: 2041854767}
@@ -1652,7 +1729,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 0
-  item: {fileID: 0}
   gridPosition: {x: -7, y: -4, z: 0}
   neighbours:
   - {fileID: 1316247774}
@@ -1718,7 +1794,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 0
-  item: {fileID: 454170538}
   gridPosition: {x: -6, y: 1, z: 0}
   neighbours:
   - {fileID: 953123597}
@@ -1768,7 +1843,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 1
-  item: {fileID: 0}
   gridPosition: {x: -4, y: 3, z: 0}
   neighbours:
   - {fileID: 166400687}
@@ -1818,7 +1892,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 0
-  item: {fileID: 0}
   gridPosition: {x: -8, y: 1, z: 0}
   neighbours:
   - {fileID: 119230984}
@@ -1854,7 +1927,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 1
-  item: {fileID: 0}
   gridPosition: {x: -1, y: -4, z: 0}
   neighbours:
   - {fileID: 1805371575}
@@ -1904,7 +1976,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 0
-  item: {fileID: 0}
   gridPosition: {x: -7, y: -1, z: 0}
   neighbours:
   - {fileID: 1190765100}
@@ -1955,7 +2026,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 1
-  item: {fileID: 0}
   gridPosition: {x: -3, y: -4, z: 0}
   neighbours:
   - {fileID: 510551014}
@@ -2005,7 +2075,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 0
-  item: {fileID: 0}
   gridPosition: {x: -6, y: -2, z: 0}
   neighbours:
   - {fileID: 966579712}
@@ -2055,7 +2124,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 1
-  item: {fileID: 0}
   gridPosition: {x: 1, y: -4, z: 0}
   neighbours:
   - {fileID: 1901079003}
@@ -2105,7 +2173,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 1
-  item: {fileID: 0}
   gridPosition: {x: -2, y: 0, z: 0}
   neighbours:
   - {fileID: 663616514}
@@ -2157,7 +2224,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 1
-  item: {fileID: 0}
   gridPosition: {x: -5, y: -1, z: 0}
   neighbours:
   - {fileID: 15097383}
@@ -2222,7 +2288,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 249976552}
   updateMode: 0
-  item: {fileID: 0}
   gridPosition: {x: -6, y: 0, z: 0}
   neighbours:
   - {fileID: 1190765100}
@@ -2259,7 +2324,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 0
-  item: {fileID: 0}
   gridPosition: {x: -6, y: -3, z: 0}
   neighbours:
   - {fileID: 1316247774}
@@ -2311,7 +2375,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 1
-  item: {fileID: 0}
   gridPosition: {x: -5, y: -2, z: 0}
   neighbours:
   - {fileID: 926396116}
@@ -2442,7 +2505,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 1
-  item: {fileID: 0}
   gridPosition: {x: -2, y: 3, z: 0}
   neighbours:
   - {fileID: 1156984393}
@@ -2493,7 +2555,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 1
-  item: {fileID: 0}
   gridPosition: {x: 1, y: 3, z: 0}
   neighbours:
   - {fileID: 2048777946}
@@ -2543,7 +2604,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 1
-  item: {fileID: 0}
   gridPosition: {x: -1, y: 3, z: 0}
   neighbours:
   - {fileID: 1030192949}
@@ -2593,7 +2653,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 1
-  item: {fileID: 0}
   gridPosition: {x: -3, y: -3, z: 0}
   neighbours:
   - {fileID: 1904268914}
@@ -2683,7 +2742,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 1
-  item: {fileID: 0}
   gridPosition: {x: 1, y: -1, z: 0}
   neighbours:
   - {fileID: 1741616782}
@@ -2733,7 +2791,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 0
-  item: {fileID: 0}
   gridPosition: {x: -8, y: -2, z: 0}
   neighbours:
   - {fileID: 1728229292}
@@ -2779,7 +2836,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.5, y: -2.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1500163563}
   m_Father: {fileID: 1409614757}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2797,7 +2855,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 1
-  item: {fileID: 0}
   gridPosition: {x: 0, y: -3, z: 0}
   neighbours:
   - {fileID: 17360248}
@@ -2814,7 +2871,7 @@ GameObject:
   - component: {fileID: 1083102656}
   - component: {fileID: 1083102655}
   m_Layer: 0
-  m_Name: prison-interactables_0 (1)
+  m_Name: Beaconer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2843,16 +2900,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1083102653}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50774a2f5be84bd46ac7a0d62dffc893, type: 3}
+  m_Script: {fileID: 11500000, guid: 3391ce7446d4c7945a3f2a92be705757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionsPerTurn: 7
-  startHeading: {x: 1, y: 0}
-  heading: {x: 0, y: 0}
-  aftraidOf:
-  - Spider
-  pattern: 0
-  wakupMessage: 
+  actionsPerTurn: 5
+  beaconSequence:
+  - {fileID: 1500163561}
+  - {fileID: 240613145}
+  - {fileID: 1631760341}
+  nextBeaconIndex: 1
+  sequence: 0
 --- !u!212 &1083102656
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2934,7 +2991,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 1
-  item: {fileID: 0}
   gridPosition: {x: 0, y: -1, z: 0}
   neighbours:
   - {fileID: 642017134}
@@ -2985,7 +3041,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 1
-  item: {fileID: 0}
   gridPosition: {x: -3, y: 3, z: 0}
   neighbours:
   - {fileID: 684231923}
@@ -3035,7 +3090,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 0
-  item: {fileID: 0}
   gridPosition: {x: -8, y: -4, z: 0}
   neighbours:
   - {fileID: 670150654}
@@ -3085,7 +3139,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 1
-  item: {fileID: 0}
   gridPosition: {x: -4, y: 0, z: 0}
   neighbours:
   - {fileID: 2139238505}
@@ -3150,7 +3203,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 0
-  item: {fileID: 0}
   gridPosition: {x: -6, y: -1, z: 0}
   neighbours:
   - {fileID: 953123597}
@@ -3200,7 +3252,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 0
-  item: {fileID: 0}
   gridPosition: {x: -7, y: 0, z: 0}
   neighbours:
   - {fileID: 953123597}
@@ -3238,7 +3289,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 1
-  item: {fileID: 0}
   gridPosition: {x: -5, y: -3, z: 0}
   neighbours:
   - {fileID: 1003834340}
@@ -3289,7 +3339,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 1
-  item: {fileID: 0}
   gridPosition: {x: 0, y: 1, z: 0}
   neighbours:
   - {fileID: 1753371211}
@@ -3339,7 +3388,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 0
-  item: {fileID: 0}
   gridPosition: {x: -7, y: -3, z: 0}
   neighbours:
   - {fileID: 966579712}
@@ -3391,7 +3439,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 1
-  item: {fileID: 0}
   gridPosition: {x: -3, y: -2, z: 0}
   neighbours:
   - {fileID: 1039168790}
@@ -3516,7 +3563,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 1
-  item: {fileID: 0}
   gridPosition: {x: -3, y: 2, z: 0}
   neighbours:
   - {fileID: 1513217587}
@@ -3531,7 +3577,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -2.5, y: 2.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1631760343}
   m_Father: {fileID: 1409614757}
   m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3566,7 +3613,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 1
-  item: {fileID: 0}
   gridPosition: {x: -2, y: 1, z: 0}
   neighbours:
   - {fileID: 852302526}
@@ -3598,7 +3644,7 @@ GameObject:
   - component: {fileID: 1423706556}
   - component: {fileID: 1423706555}
   m_Layer: 0
-  m_Name: prison-interactables_0
+  m_Name: Patroller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3718,7 +3764,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 1
-  item: {fileID: 0}
   gridPosition: {x: -5, y: 2, z: 0}
   neighbours:
   - {fileID: 391864103}
@@ -3736,6 +3781,101 @@ Transform:
   m_Children: []
   m_Father: {fileID: 284641402}
   m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1500163560
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1500163563}
+  - component: {fileID: 1500163562}
+  - component: {fileID: 1500163561}
+  m_Layer: 0
+  m_Name: Beacon
+  m_TagString: Beacon
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1500163561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1500163560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28f6057f62e3c844f833ab5651bd7dc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _firstPickup: 
+--- !u!212 &1500163562
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1500163560}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 1987509777
+  m_SortingLayer: 1
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 5502269439739279523, guid: 649de03a7f2a2e041a0e0a8a3524c1f5,
+    type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &1500163563
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1500163560}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1082817265}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1513217586
 GameObject:
@@ -3768,7 +3908,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 1
-  item: {fileID: 0}
   gridPosition: {x: -4, y: 2, z: 0}
   neighbours:
   - {fileID: 1877103672}
@@ -3818,7 +3957,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 1
-  item: {fileID: 0}
   gridPosition: {x: -3, y: 0, z: 0}
   neighbours:
   - {fileID: 1185776789}
@@ -4091,7 +4229,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 0
-  item: {fileID: 2091029192}
   gridPosition: {x: -7, y: -2, z: 0}
   neighbours:
   - {fileID: 1316247774}
@@ -4143,7 +4280,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 1
-  item: {fileID: 0}
   gridPosition: {x: 1, y: 1, z: 0}
   neighbours:
   - {fileID: 1999695317}
@@ -4195,6 +4331,101 @@ Transform:
   - {fileID: 1409614757}
   m_Father: {fileID: 1564885401}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1631760340
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1631760343}
+  - component: {fileID: 1631760342}
+  - component: {fileID: 1631760341}
+  m_Layer: 0
+  m_Name: Beacon (2)
+  m_TagString: Beacon
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1631760341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1631760340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28f6057f62e3c844f833ab5651bd7dc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _firstPickup: 
+--- !u!212 &1631760342
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1631760340}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 1987509777
+  m_SortingLayer: 1
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 5502269439739279523, guid: 649de03a7f2a2e041a0e0a8a3524c1f5,
+    type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &1631760343
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1631760340}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1413541387}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1652045606
 GameObject:
@@ -4381,7 +4612,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 0
-  item: {fileID: 0}
   gridPosition: {x: -8, y: -3, z: 0}
   neighbours:
   - {fileID: 1316247774}
@@ -4432,7 +4662,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 1
-  item: {fileID: 0}
   gridPosition: {x: 1, y: 0, z: 0}
   neighbours:
   - {fileID: 1615868584}
@@ -4743,7 +4972,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 1
-  item: {fileID: 0}
   gridPosition: {x: 0, y: 0, z: 0}
   neighbours:
   - {fileID: 1093546220}
@@ -5986,7 +6214,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 1
-  item: {fileID: 0}
   gridPosition: {x: 0, y: -4, z: 0}
   neighbours:
   - {fileID: 708669747}
@@ -6050,7 +6277,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 1
-  item: {fileID: 0}
   gridPosition: {x: 0, y: 2, z: 0}
   neighbours:
   - {fileID: 1300413382}
@@ -6139,7 +6365,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 1
-  item: {fileID: 0}
   gridPosition: {x: -4, y: 1, z: 0}
   neighbours:
   - {fileID: 1185776789}
@@ -6284,7 +6509,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 1
-  item: {fileID: 0}
   gridPosition: {x: 1, y: -3, z: 0}
   neighbours:
   - {fileID: 392325768}
@@ -6334,7 +6558,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 1
-  item: {fileID: 0}
   gridPosition: {x: -2, y: -3, z: 0}
   neighbours:
   - {fileID: 17360248}
@@ -6385,7 +6608,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 1
-  item: {fileID: 0}
   gridPosition: {x: -4, y: -2, z: 0}
   neighbours:
   - {fileID: 67495710}
@@ -6436,7 +6658,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 1
-  item: {fileID: 0}
   gridPosition: {x: 1, y: 2, z: 0}
   neighbours:
   - {fileID: 1031261554}
@@ -6486,7 +6707,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 1
-  item: {fileID: 0}
   gridPosition: {x: -2, y: -2, z: 0}
   neighbours:
   - {fileID: 1904268914}
@@ -6538,7 +6758,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   updateMode: 1
-  item: {fileID: 0}
   gridPosition: {x: 0, y: 3, z: 0}
   neighbours:
   - {fileID: 1038040986}
@@ -6778,7 +6997,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 317211286}
   updateMode: 1
-  item: {fileID: 0}
   gridPosition: {x: -4, y: -1, z: 0}
   neighbours:
   - {fileID: 1970955508}

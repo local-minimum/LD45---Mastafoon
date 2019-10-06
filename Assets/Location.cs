@@ -9,7 +9,7 @@ public class Location : MonoBehaviour
 {
     [SerializeField] Interactable interactable;    
     [SerializeField] LiveUpdate updateMode;
-    [SerializeField] Item item;
+    Item item;
 
     [SerializeField]
     Vector3Int gridPosition;
@@ -20,7 +20,8 @@ public class Location : MonoBehaviour
 
     private void OnEnable()
     {
-        
+        item = GetComponentInChildren<Item>();
+        if (item) PlaceItem(item);        
         grid = GetComponentInParent<Grid>();
     }
 
@@ -240,8 +241,7 @@ public class Location : MonoBehaviour
                 }
                 seen.Add(possibleTarget);
                 if (maxDistance < 0 || path.Count < maxDistance) paths.Enqueue(path);
-            }
-
+            }            
             if (paths.Count == 0) break;
             currentPath = paths.Dequeue();
             currentLocation = currentPath[currentPath.Count - 1];

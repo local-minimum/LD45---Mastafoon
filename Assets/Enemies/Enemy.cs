@@ -12,7 +12,7 @@ public abstract class Enemy : MonoBehaviour
         FindObjectOfType<EnemyManager>().AddEnemy(this);
     }
 
-    [SerializeField, Range(0, 30)] protected int actionsPerTurn;
+    [SerializeField, Range(0, 30)] protected int actionsPerTurn = 5;
     protected int remainingActionPoints;
 
     public void ResetTicks()
