@@ -9,7 +9,6 @@ public class ActionsInventory : MonoBehaviour
     [SerializeField] Image foreground;
     [SerializeField] Color activeColor;
     [SerializeField] Color inactiveColor;
-    [SerializeField] Narrator narrator;
     ActionInventorySlot[] slots;    
 
     void Start()
@@ -65,7 +64,7 @@ public class ActionsInventory : MonoBehaviour
                 slots[action].PickUp(item, location);                
                 if (!item.firstPickupEmitted && !string.IsNullOrEmpty(item.firstPickup))
                 {
-                    narrator.ShowPieceByKey(item.firstPickup);
+                    Narrator.ShowPieceByKey(item.firstPickup);
                     item.firstPickupEmitted = true;
                 }
                 break;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum PatrollerPattern { TurnLeft, TurnRight, Bounce };
+public enum PatrollerPattern { TurnLeft, TurnRight, Bounce};
 
 public class Patroller : Enemy
 {
@@ -29,12 +29,12 @@ public class Patroller : Enemy
             {
                 if (!emittedMesasge)
                 {
-                    FindObjectOfType<Narrator>().ShowPieceByKey(wakupMessage);
+                    Narrator.ShowPieceByKey(wakupMessage);
                     emittedMesasge = true;
                 }
                 else
                 {
-                    FindObjectOfType<Narrator>().ClearDisplay(wakupMessage);
+                    Narrator.ClearDisplay(wakupMessage);
                     wakupMessage = "";
                 }
             }            
@@ -68,19 +68,45 @@ public class Patroller : Enemy
         return false;
     }
 
-    void Turn()
+    Vector2Int GetTurnHeading(PatrollerPattern pattern)
     {
         switch (pattern)
         {
-            case PatrollerPattern.Bounce:
-                heading = new Vector2Int(-heading.x, -heading.y);
-                break;
             case PatrollerPattern.TurnLeft:
-                heading = new Vector2Int(-heading.y, heading.x);
-                break;
+                return new Vector2Int(-heading.y, heading.x);
             case PatrollerPattern.TurnRight:
-                heading = new Vector2Int(heading.y, -heading.x);
-                break;
+                return new Vector2Int(heading.y, -heading.x);
+            case PatrollerPattern.Bounce:
+                return new Vector2Int(-heading.x, -heading.y);
+        }
+        throw new System.Exception("Illegal turn pattern");
+    }
+
+    bool SetHeadingIfExists(PatrollerPattern pattern)
+    {
+        Vector2Int nextHeading = GetTurnHeading(pattern);
+        if (location.GetNeighbour(nextHeading))
+        {
+            heading = nextHeading;
+            return true;
+        }
+        return false;
+    }
+
+    void Turn()
+    {
+        if (SetHeadingIfExists(pattern)) return;
+        if (pattern != PatrollerPattern.TurnLeft)
+        {
+            if (SetHeadingIfExists(PatrollerPattern.TurnLeft)) return;
+        }
+        if (pattern != PatrollerPattern.TurnRight)
+        {
+            if (SetHeadingIfExists(PatrollerPattern.TurnRight)) return;
+        }
+        if (pattern != PatrollerPattern.Bounce)
+        {
+            if (SetHeadingIfExists(PatrollerPattern.Bounce)) return;
         }
     }
 }

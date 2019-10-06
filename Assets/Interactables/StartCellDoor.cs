@@ -12,11 +12,9 @@ public class StartCellDoor : Interactable
     [SerializeField] GameObject[] roomsToActivate;
     [SerializeField] string[] dialogues;
     int dialgueIndex = 0;
-    Narrator narrator;
 
     private void Awake()
     {
-        narrator = FindObjectOfType<Narrator>();
         shownWhenOpen.SetActive(!isClosed);
         worldDoor.SetActive(isClosed);
         for (int i=0; i<roomsToActivate.Length; i++)
@@ -30,11 +28,11 @@ public class StartCellDoor : Interactable
         {
             if (dialgueIndex < dialogues.Length)
             {
-                narrator.ShowPieceByKey(dialogues[dialgueIndex]);
+                Narrator.ShowPieceByKey(dialogues[dialgueIndex]);
                 dialgueIndex++;
             } else
             {
-                narrator.ClearDisplay();
+                Narrator.ClearDisplay();
                 openFrom.AddNeighbour(openTo);
                 shownWhenOpen.SetActive(true);
                 isClosed = false;

@@ -27,11 +27,10 @@ public class Character : MonoBehaviour
 
     void Start()
     {
-        actionsInventory = FindObjectOfType<ActionsInventory>();
-        narrator = FindObjectOfType<Narrator>();
+        actionsInventory = FindObjectOfType<ActionsInventory>();        
         location = start;
         location.PlaceCharacter(this);
-        if (!string.IsNullOrEmpty(messageOnLoad)) narrator.ShowPieceByKey(messageOnLoad);
+        if (!string.IsNullOrEmpty(messageOnLoad)) Narrator.ShowPieceByKey(messageOnLoad);
     }
 
     private void OnEnable()

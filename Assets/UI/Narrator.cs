@@ -15,6 +15,7 @@ public class StoryPiece
 
 public class Narrator : MonoBehaviour
 {
+    [SerializeField] Animator anim;
     [SerializeField]
     StoryPiece[] pieces;
     [SerializeField]
@@ -24,8 +25,49 @@ public class Narrator : MonoBehaviour
     [SerializeField]
     TMPro.TextMeshProUGUI body;
     string mostRecentKey;
-    
-    public void ShowPieceByKey(string key)
+
+    static Narrator _instance;
+    public static Narrator instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindObjectOfType<Narrator>();
+            }
+            return _instance;
+        }
+
+        private set
+        {
+            _instance = value;
+        }
+    }
+
+    private void Awake()
+    {
+        if (_instance == null)
+        {
+            _instance = this;
+        } else if (_instance != this)
+        {
+            Debug.LogError(string.Format("Two narrators active (keeping {0}, destroying {1})", _instance, this));
+            Destroy(this);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (_instance == this) _instance = null;
+    }
+
+
+    public static void ShowPieceByKey(string key)
+    {
+        instance._ShowPieceByKey(key);
+    }
+
+    void _ShowPieceByKey(string key)
     {
         for (int i=0; i<pieces.Length; i++)
         {
@@ -46,18 +88,26 @@ public class Narrator : MonoBehaviour
         profilePicture.sprite = piece.profilePicture;
         profilePicture.enabled = true;
         mostRecentKey = piece.key;
+        if (anim) anim.SetTrigger("NewContent");
+
     }
 
-    public void ClearDisplay(string key)
+    public static void ClearDisplay(string key)
     {
-        if (key == mostRecentKey) ClearDisplay();
+        if (key == instance.mostRecentKey) ClearDisplay();
     }
 
-    public void ClearDisplay()
+    public static void ClearDisplay()
+    {
+        instance._ClearDisplay();
+    }
+
+    void _ClearDisplay()
     {
         characterName.text = "";
         body.text = "";
         profilePicture.enabled = false;
         mostRecentKey = "";
+        if (anim) anim.SetTrigger("NoContent");
     }
 }
