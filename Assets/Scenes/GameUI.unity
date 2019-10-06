@@ -168,7 +168,7 @@ MonoBehaviour:
   - Level 1
   - Level 2
   - Level 3
-  currentLevel: 3
+  currentLevel: 1
   inventory: {fileID: 1654044748}
 --- !u!1001 &822854196
 PrefabInstance:
@@ -337,6 +337,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 5154132690813920794, guid: 4a3b774e33058d44eb1d891892158192,
+        type: 3}
+      propertyPath: endTurnButton
+      value: 
+      objectReference: {fileID: 2003910757}
     - target: {fileID: 5154132690117247579, guid: 4a3b774e33058d44eb1d891892158192,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -442,5 +447,42 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5154132691185357000, guid: 4a3b774e33058d44eb1d891892158192,
+        type: 3}
+      propertyPath: m_Name
+      value: EndTurn
+      objectReference: {fileID: 0}
+    - target: {fileID: 5154132691185357006, guid: 4a3b774e33058d44eb1d891892158192,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5154132691185357006, guid: 4a3b774e33058d44eb1d891892158192,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5154132691185357006, guid: 4a3b774e33058d44eb1d891892158192,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5154132691185357006, guid: 4a3b774e33058d44eb1d891892158192,
+        type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a3b774e33058d44eb1d891892158192, type: 3}
+--- !u!114 &2003910757 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5154132691185357006, guid: 4a3b774e33058d44eb1d891892158192,
+    type: 3}
+  m_PrefabInstance: {fileID: 2003910756}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

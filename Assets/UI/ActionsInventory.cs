@@ -9,12 +9,44 @@ public class ActionsInventory : MonoBehaviour
     [SerializeField] Image foreground;
     [SerializeField] Color activeColor;
     [SerializeField] Color inactiveColor;
-    ActionInventorySlot[] slots;    
+    ActionInventorySlot[] slots;
+    [SerializeField] Button endTurnButton;
 
     void Start()
     {        
         slots = GetComponentsInChildren<ActionInventorySlot>();
         NewTurn();
+    }
+
+    private void Update()
+    {
+        if (endTurnButton.interactable)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                EndTurn();
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                AttemptDrop(slots[0]);
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                AttemptDrop(slots[1]);
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                AttemptDrop(slots[2]);
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                AttemptDrop(slots[3]);
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha5))
+            {
+                AttemptDrop(slots[4]);
+            }
+        }
     }
 
     public void ForgetCharacter()
