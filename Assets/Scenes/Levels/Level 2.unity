@@ -3134,6 +3134,11 @@ PrefabInstance:
       propertyPath: probabilityToNarrate
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: 5006216127303965237, guid: ae4c417a952304545b906e05b27b2c84,
+        type: 3}
+      propertyPath: wakupMessage
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae4c417a952304545b906e05b27b2c84, type: 3}
 --- !u!4 &1958524744 stripped

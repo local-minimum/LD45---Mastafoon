@@ -88,7 +88,7 @@ public class Narrator : MonoBehaviour
         profilePicture.sprite = piece.profilePicture;
         profilePicture.enabled = true;
         mostRecentKey = piece.key;
-        if (anim) anim.SetTrigger("NewContent");
+        if (anim) anim.SetTrigger("Flash");
 
     }
 

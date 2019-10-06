@@ -162,6 +162,7 @@ public class ActionsInventory : MonoBehaviour
             slots[action].ResetActionPoint();
         }
         foreground.color = activeColor;
+        endTurnButton.interactable = true;
     }
 
     public void EnemyTurn()
@@ -175,5 +176,6 @@ public class ActionsInventory : MonoBehaviour
         {
             slots[action].UseActionPoint();
         }
+        endTurnButton.interactable = false;
     }
 }
