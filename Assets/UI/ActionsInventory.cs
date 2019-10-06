@@ -124,6 +124,7 @@ public class ActionsInventory : MonoBehaviour
 
     public void NewTurn()
     {
+        if (slots == null) return;
         for (int action = 0; action < slots.Length; action++)
         {
             slots[action].ResetActionPoint();

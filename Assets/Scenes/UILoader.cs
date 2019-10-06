@@ -10,6 +10,6 @@ public class UILoader : MonoBehaviour
         const string uiSceneName = "GameUI";
         Scene ui = SceneManager.GetSceneByName(uiSceneName);
         
-        if (!ui.isLoaded) SceneManager.LoadScene(uiSceneName);
+        if (!ui.isLoaded) SceneManager.LoadScene(uiSceneName, LoadSceneMode.Additive);
     }
 }
