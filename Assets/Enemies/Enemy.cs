@@ -10,10 +10,12 @@ public abstract class Enemy : MonoBehaviour
     string narrateOnTurn;
     [SerializeField, Range(0, 1)]
     float probabilityToNarrate;
-    
+
+    protected Animator anim;
 
     private void Awake()
     {
+        anim = GetComponent<Animator>();
         location = GetComponentInParent<Location>();
         FindObjectOfType<EnemyManager>().AddEnemy(this);
     }
@@ -39,7 +41,7 @@ public abstract class Enemy : MonoBehaviour
     }
 
     public abstract void Act();
-
+    public abstract void Rest();
     protected bool MoveTo(Location nextLocation)
     {
         if (CaptureCharacter(nextLocation))

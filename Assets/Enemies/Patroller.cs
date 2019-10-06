@@ -18,9 +18,16 @@ public class Patroller : Enemy
     [SerializeField] PatrollerPattern pattern;
     [SerializeField] string wakupMessage;
     bool emittedMesasge;
+    bool wasWalking = false;
     private void Start()
     {
         heading = startHeading;
+    }
+
+    public override void Rest()
+    {
+        anim.SetTrigger("Rest");
+        wasWalking = false;
     }
 
     public override void Act()
@@ -66,10 +73,27 @@ public class Patroller : Enemy
                 Turn();
                 return false;
             }
+            if (!wasWalking)
+            {
+                wasWalking = true;
+                SetWalkAnimFromHeading(heading);
+            }
             return true;
         }
         Turn();
         return false;
+    }
+
+    void SetWalkAnimFromHeading(Vector2Int heading)
+    {
+        if (heading.y == 1)
+        {
+            anim.SetTrigger("WalkNorth");
+        }
+        else
+        {
+            anim.SetTrigger("Walk");
+        }
     }
 
     void EmitAfraidMessage(string tag)
@@ -99,6 +123,11 @@ public class Patroller : Enemy
         Vector2Int nextHeading = GetTurnHeading(pattern);
         if (location.GetNeighbour(nextHeading))
         {
+            if (heading != nextHeading)
+            {
+                Debug.Log(nextHeading);
+                SetWalkAnimFromHeading(nextHeading);
+            }
             heading = nextHeading;
             return true;
         }

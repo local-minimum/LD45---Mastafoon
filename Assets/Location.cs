@@ -28,14 +28,14 @@ public class Location : MonoBehaviour
         Character character = GetComponentInChildren<Character>();
         if (character) PlaceCharacter(character);
         Enemy enemy = GetComponentInChildren<Enemy>();
-        if (enemy) PlaceEnemy(enemy);
+        if (enemy) PlaceEnemy(enemy, true);
         grid = GetComponentInParent<Grid>();
     }
 
 
     void SetWorldFromGridPosition()
     {
-        transform.position = grid.CellToWorld(gridPosition) + grid.cellSize * 0.5f;
+        transform.position = grid.GetCellCenterWorld (gridPosition) + grid.cellSize * 0.5f;
     }
 
     void SetGridPositionFromWorld()
@@ -130,12 +130,19 @@ public class Location : MonoBehaviour
         this.item = item;
     }
 
-    public bool PlaceEnemy(Enemy enemy)
+    public bool PlaceEnemy(Enemy enemy, bool noTransition = false)
     {
         if (!hasEnemyOrCharacter(enemy))
         {
             enemy.transform.SetParent(transform);
-            StartCoroutine(_AnimateEnemyTransition(enemy.transform));
+            if (noTransition)
+            {
+                enemy.transform.localPosition = Vector3.zero;
+            } else
+            {
+                StartCoroutine(_AnimateEnemyTransition(enemy.transform));
+            }
+            
             return true;
         }
         return false;
@@ -213,16 +220,22 @@ public class Location : MonoBehaviour
         FindObjectOfType<SessionManager>().KillCharacter(steps, turns);
     }
 
-    void Update()
+    public void Position()
     {
-#if UNITY_EDITOR
         if (updateMode == LiveUpdate.LocationToPosition)
         {
             SetWorldFromGridPosition();
-        } else if (updateMode == LiveUpdate.PositionToLocation)
+        }
+        else if (updateMode == LiveUpdate.PositionToLocation)
         {
             SetGridPositionFromWorld();
         }
+    }
+
+    void Update()
+    {
+#if UNITY_EDITOR
+        Position();
         Interactable interactable = GetComponentInChildren<Interactable>();
         if (interactable && interactable != this.interactable)
         {

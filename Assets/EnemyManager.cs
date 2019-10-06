@@ -34,6 +34,17 @@ public class EnemyManager : MonoBehaviour
             {
                 worldClock.GiveTurnTo(Turn.Player);
             }
+        } else if (changeOfTurn)
+        {
+            RestBeasts();
+        }
+    }
+
+    void RestBeasts()
+    {
+        for (int i = 0, l = enemies.Count; i < l; i++)
+        {
+            enemies[i].Rest();
         }
     }
 

@@ -9,6 +9,8 @@ public class RoomHelper : MonoBehaviour
     bool connectLocations = false;
     [SerializeField]
     bool clearConnections = false;
+    [SerializeField]
+    bool positionAll = false;
 
     void ConnectLocations()
     {
@@ -30,6 +32,15 @@ public class RoomHelper : MonoBehaviour
             }
         }
     }
+    void PositionAll()
+    {
+        Location[] locations = GetComponentsInChildren<Location>();
+        for (int i = 0; i < locations.Length; i++)
+        {
+            locations[i].Position();
+        }
+
+    }
 
     void ClearAllConnections()
     {
@@ -41,8 +52,15 @@ public class RoomHelper : MonoBehaviour
 
     }
 
+
+#if UNITY_EDITOR
     void Update()
     {
+        if (positionAll)
+        {
+            positionAll = false;
+            PositionAll();
+        }
         if (clearConnections)
         {
             clearConnections = false;
@@ -54,4 +72,5 @@ public class RoomHelper : MonoBehaviour
             ConnectLocations();
         }
     }
+#endif
 }

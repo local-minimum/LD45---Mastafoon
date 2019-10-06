@@ -12,6 +12,10 @@ public class Beaconer : Enemy
     int nextBeaconStep = 1;
     [SerializeField] BeaconSequence sequence;
 
+    public override void Rest()
+    {        
+    }
+
     public override void Act()
     {
         Location neighbour = FindNextLocation();

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5006216127303965236}
   - component: {fileID: 5006216127303965234}
   - component: {fileID: 5006216127303965237}
+  - component: {fileID: 5733071576012496657}
   m_Layer: 0
   m_Name: Patroller
   m_TagString: Untagged
@@ -70,13 +71,13 @@ SpriteRenderer:
   m_SortingLayerID: 1765402717
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: -8312420563691395660, guid: 649de03a7f2a2e041a0e0a8a3524c1f5,
+  m_Sprite: {fileID: 2731795287329381114, guid: 7e40962d17981364c86657d1eebea0e3,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.5, y: 0.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -105,3 +106,22 @@ MonoBehaviour:
   - patroller-trds-spider
   pattern: 1
   wakupMessage: patroller-trds-intro
+--- !u!95 &5733071576012496657
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5006216127303965239}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 54f1d86cf0b2a7441852567cb08dea47, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
