@@ -171,7 +171,7 @@ public class SessionManager : MonoBehaviour
     {
         if (surrenderButton.interactable)
         {
-            surrenderStart = Time.timeSinceLevelLoad;
+            surrenderStart = Time.timeSinceLevelLoad - Mathf.Max(0f, ((surrenderEnd - surrenderStart) - (Time.timeSinceLevelLoad - surrenderEnd)) / timeToSurrender);
             surrendering = true;
         }
     }
@@ -202,8 +202,20 @@ public class SessionManager : MonoBehaviour
         }
     }
 
+    private void CheckSurrenderHotkeys()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SurrenderStart();
+        } else if (Input.GetKeyUp(KeyCode.R))
+        {
+            SurrenderStop();
+        }
+    }
+
     private void Update()
     {
+        CheckSurrenderHotkeys();
         UpdateSurrendering();
     }
 }
