@@ -49,7 +49,6 @@ public class Character : MonoBehaviour
 
         if (turn == Turn.Player)
         {
-            Debug.Log(changeOfTurn);
             if (changeOfTurn) actionsInventory.NewTurn();
             if (actionsInventory.remainingActions == 0)
             {
