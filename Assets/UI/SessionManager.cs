@@ -98,14 +98,13 @@ public class SessionManager : MonoBehaviour
 
     public void ImprisonCharacter(int stepsTaken, int turnsPassed)
     {
-        anim.SetTrigger("Jail");
         levelRestarts += 1;
         this.stepsTaken += stepsTaken;
         this.turnsPassed += turnsPassed;
         Debug.Log(string.Format("Death: {0} Restarts, {1} Turns, {2} Steps", levelRestarts, this.turnsPassed, this.stepsTaken));
-        delayOpen = 0;
-        ReloadLevel();
-    }
+        
+        StartCoroutine(ReloadLevel());
+    }    
 
     void LoadNextLevel()
     {
@@ -116,10 +115,13 @@ public class SessionManager : MonoBehaviour
         currentLevel++;
     }
 
-    void ReloadLevel(bool unload=true)
+    IEnumerator<WaitForSeconds> ReloadLevel()
     {
+        delayOpen = 2f;
+        yield return new WaitForSeconds(1f);
+        anim.SetTrigger("Jail");
+        SceneManager.UnloadSceneAsync(levels[currentLevel]);
         inventory.ForgetCharacter();
         inventory.ClearInventory();
-        SceneManager.UnloadSceneAsync(levels[currentLevel]);
     }
 }

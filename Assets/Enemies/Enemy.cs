@@ -45,8 +45,10 @@ public abstract class Enemy : MonoBehaviour
     protected bool MoveTo(Location nextLocation)
     {
         if (CaptureCharacter(nextLocation))
-        {            
-            nextLocation.KillCharacter();
+        {
+            
+            nextLocation.PlaceEnemy(this, false, true);
+            nextLocation.CaptureCharacter();
             return true;            
         }
         if (nextLocation.PlaceEnemy(this)) {

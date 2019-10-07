@@ -130,9 +130,9 @@ public class Location : MonoBehaviour
         this.item = item;
     }
 
-    public bool PlaceEnemy(Enemy enemy, bool noTransition = false)
+    public bool PlaceEnemy(Enemy enemy, bool noTransition = false, bool force = false)
     {
-        if (!hasEnemyOrCharacter(enemy))
+        if (force || !hasEnemyOrCharacter(enemy))
         {
             enemy.transform.SetParent(transform);
             if (noTransition)
@@ -197,7 +197,7 @@ public class Location : MonoBehaviour
             {
                 if (envs[i].isDangerous)
                 {
-                    KillCharacter();
+                    CaptureCharacter();
                 }
             }
             return true;
@@ -213,9 +213,11 @@ public class Location : MonoBehaviour
         }
     }
 
-    public void KillCharacter()
+    public void CaptureCharacter()
     {
-        int turns = FindObjectOfType<WorldClock>().turnsTaken;
+        WorldClock worldClock = FindObjectOfType<WorldClock>();
+        worldClock.GiveTurnTo(Turn.None);
+        int turns = worldClock.turnsTaken;
         int steps = GetComponentInChildren<Character>().stepsTaken;
         FindObjectOfType<SessionManager>().ImprisonCharacter(steps, turns);
     }

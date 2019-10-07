@@ -26,7 +26,7 @@ public class Environmentals : MonoBehaviour
         {
             if (location.hasCharacter)
             {
-                location.KillCharacter();
+                location.CaptureCharacter();
             }
         }
     }

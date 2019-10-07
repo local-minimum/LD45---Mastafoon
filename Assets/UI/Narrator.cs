@@ -135,9 +135,6 @@ public class Narrator : MonoBehaviour
 
     void _ClearDisplay()
     {
-        //characterName.text = "";
-        //body.text = "";
-        //profilePicture.enabled = false;
         mostRecentKey = "";
         currentlyShowing = null;
         if (anim) anim.SetTrigger("NoContent");
