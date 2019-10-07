@@ -6,18 +6,23 @@ public enum BeaconSequence { Bounce, Wrap}
 public class Beaconer : Enemy
 {
     [SerializeField]
-    Item[] beaconSequence;
+    Beacon[] beaconSequence;
     [SerializeField]
     int nextBeaconIndex = 0;
     int nextBeaconStep = 1;
     [SerializeField] BeaconSequence sequence;
+
+    private void Start()
+    {
+        SetBeaconActivity();
+    }
 
     public override void Rest()
     {        
     }
 
     public override void Act()
-    {
+    {        
         Location neighbour = FindNextLocation();
         if (neighbour)
         {
@@ -66,6 +71,7 @@ public class Beaconer : Enemy
                             nextBeaconIndex = beaconSequence.Length - 1;
                         }
                     }
+                    SetBeaconActivity();
                 }
             }
         }
@@ -77,5 +83,13 @@ public class Beaconer : Enemy
             target = AttemptCapture(lookAllMap);
         }
         return target;
+    }
+
+    void SetBeaconActivity()
+    {
+        for (int i=0; i<beaconSequence.Length; i++)
+        {
+            beaconSequence[i].SetBeaconActive(i == nextBeaconIndex);
+        }
     }
 }

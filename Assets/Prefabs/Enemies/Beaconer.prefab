@@ -70,7 +70,7 @@ SpriteRenderer:
   m_SortingLayerID: 1765402717
   m_SortingLayer: 2
   m_SortingOrder: 1
-  m_Sprite: {fileID: -8312420563691395660, guid: 649de03a7f2a2e041a0e0a8a3524c1f5,
+  m_Sprite: {fileID: -3231492579343523708, guid: 7e40962d17981364c86657d1eebea0e3,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -97,6 +97,10 @@ MonoBehaviour:
   narrateOnTurn: 
   probabilityToNarrate: 0
   actionsPerTurn: 5
+  moveSounds: []
+  moveVolume: 0.5
+  captureSounds: []
+  captureVolume: 1
   beaconSequence:
   - {fileID: 0}
   - {fileID: 0}

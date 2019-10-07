@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3840239292999741918}
   - component: {fileID: 3840239292999741919}
-  - component: {fileID: 3840239292999741916}
+  - component: {fileID: 6841579682729855036}
   m_Layer: 0
   m_Name: Beacon
   m_TagString: Beacon
@@ -70,7 +70,7 @@ SpriteRenderer:
   m_SortingLayerID: 1987509777
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 5502269439739279523, guid: 649de03a7f2a2e041a0e0a8a3524c1f5,
+  m_Sprite: {fileID: 5155071074158098156, guid: 9e7c9ee9f2310304c9b7b37b74ddeef2,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3840239292999741916
+--- !u!114 &6841579682729855036
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -91,7 +91,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3840239292999741917}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28f6057f62e3c844f833ab5651bd7dc0, type: 3}
+  m_Script: {fileID: 11500000, guid: 5e115a409acc281428112c3b080df107, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _firstPickup: 
+  inactiveSprite: {fileID: 5155071074158098156, guid: 9e7c9ee9f2310304c9b7b37b74ddeef2,
+    type: 3}
+  activeSprite: {fileID: 348766662639067796, guid: 9e7c9ee9f2310304c9b7b37b74ddeef2,
+    type: 3}
