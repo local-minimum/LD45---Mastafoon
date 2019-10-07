@@ -22,5 +22,7 @@ public class Beacon : Item
     public void SetBeaconActive(bool active)
     {
         sr.sprite = active ? activeSprite : inactiveSprite;
+        ActionInventorySlot slot = GetComponentInParent<ActionInventorySlot>();
+        if (slot != null) slot.UpdateIcon(this, sr.sprite);
     }
 }

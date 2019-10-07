@@ -57,6 +57,11 @@ public class ActionInventorySlot : MonoBehaviour
         return false;
     }
 
+    public void UpdateIcon(Item item, Sprite sprite)
+    {
+        if (item != null && this.item == item) inventoryItem.sprite = sprite;
+    }
+
     public void PickUp(Item item, Location location)
     {
         this.item = item;
