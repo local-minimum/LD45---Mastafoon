@@ -105,6 +105,7 @@ MonoBehaviour:
   captureSounds:
   - {fileID: 8300000, guid: 66622dff25cadd44cb86ed21cd7d6a98, type: 3}
   captureVolume: 1
+  beaconSound: {fileID: 8300000, guid: 59708eef84511c14cbf3ab9d009114c4, type: 3}
   beaconSequence:
   - {fileID: 0}
   - {fileID: 0}

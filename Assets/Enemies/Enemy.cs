@@ -45,7 +45,7 @@ public abstract class Enemy : MonoBehaviour
     public abstract void Act();
     public abstract void Rest();
 
-    AudioSource speaker;
+    protected AudioSource speaker;
     [SerializeField]
     AudioClip[] moveSounds;
     [SerializeField, Range(0, 1)]

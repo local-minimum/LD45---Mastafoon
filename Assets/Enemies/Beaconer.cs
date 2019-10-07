@@ -5,6 +5,8 @@ using UnityEngine;
 public enum BeaconSequence { Bounce, Wrap}
 public class Beaconer : Enemy
 {
+    [SerializeField] AudioClip beaconSound;
+
     [SerializeField]
     Beacon[] beaconSequence;
     [SerializeField]
@@ -49,7 +51,8 @@ public class Beaconer : Enemy
                 target = trail[0];
                 if (trail.Count == 1)
                 {                    
-                    nextBeaconIndex += nextBeaconStep;                    
+                    nextBeaconIndex += nextBeaconStep;
+                    speaker.PlayOneShot(beaconSound);
                     if (nextBeaconIndex >= beaconSequence.Length)
                     {
                         if (sequence == BeaconSequence.Bounce)
