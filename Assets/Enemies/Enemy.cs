@@ -89,4 +89,16 @@ public abstract class Enemy : MonoBehaviour
         return path == null ? null : path[0];
 
     }
+
+    protected void SetWalkAnimFromHeading(Vector2Int heading)
+    {
+        if (heading.y == 1)
+        {
+            anim.SetTrigger("WalkNorth");
+        }
+        else
+        {
+            anim.SetTrigger("Walk");
+        }
+    }
 }

@@ -3678,6 +3678,11 @@ PrefabInstance:
       propertyPath: sequence
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6728658661668128999, guid: 1241b4fa19f804445b85eebbef6875e8,
+        type: 3}
+      propertyPath: moveVolume
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1241b4fa19f804445b85eebbef6875e8, type: 3}
 --- !u!4 &1835303987 stripped

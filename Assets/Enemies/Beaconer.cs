@@ -26,6 +26,7 @@ public class Beaconer : Enemy
         Location neighbour = FindNextLocation();
         if (neighbour)
         {
+            SetWalkAnimFromHeading(location.HeadingTo(neighbour));
             MoveTo(neighbour);
         }
     }

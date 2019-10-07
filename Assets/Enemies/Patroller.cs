@@ -84,18 +84,6 @@ public class Patroller : Enemy
         return false;
     }
 
-    void SetWalkAnimFromHeading(Vector2Int heading)
-    {
-        if (heading.y == 1)
-        {
-            anim.SetTrigger("WalkNorth");
-        }
-        else
-        {
-            anim.SetTrigger("Walk");
-        }
-    }
-
     void EmitAfraidMessage(string tag)
     {
         int pos = afraidOf.IndexOf(tag);
