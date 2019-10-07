@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SessionManager : MonoBehaviour
 {
@@ -15,10 +16,11 @@ public class SessionManager : MonoBehaviour
 
     int levelRestarts;
     int stepsTaken;
-    int turnsPassed;
+    int turnsPassed;    
 
     private void OnEnable()
     {
+        DisableSurrendering();
         SceneManager.sceneLoaded += SceneManager_sceneLoaded;
         SceneManager.sceneUnloaded += SceneManager_sceneUnloaded;
     }
@@ -74,6 +76,7 @@ public class SessionManager : MonoBehaviour
         yield return new WaitForSeconds(delayOpen);
         anim.SetTrigger("Open");
         worldClock.GiveTurnTo(Turn.Player);
+        EnableSurrendering();
     }
 
     private void SceneManager_sceneUnloaded(Scene scene)
@@ -85,23 +88,36 @@ public class SessionManager : MonoBehaviour
         }        
     }
 
-    public void ReportLevelCompleted(int stepsTaken, int turnsPassed)
+    void UpdateTurnsAndSteps()
     {
-        anim.SetTrigger("Close");
-        this.stepsTaken += stepsTaken;
-        this.turnsPassed += turnsPassed;
-        Debug.Log(string.Format("Completed: {0} Restarts, {1} Turns, {2} Steps", levelRestarts, this.turnsPassed, this.stepsTaken));
+        Character character = FindObjectOfType<Character>();
+        stepsTaken += character.stepsTaken;
+        WorldClock worldClock = FindObjectOfType<WorldClock>();
+        turnsPassed += worldClock.turnsTaken;
+    }
 
-        this.stepsTaken = 0;
-        this.turnsPassed = 0;        
+    void ResetTurnsAndSteps()
+    {
+        stepsTaken = 0;
+        turnsPassed = 0;
+    }
+
+    public void ReportLevelCompleted()
+    {
+        DisableSurrendering();
+        anim.SetTrigger("Close");
+        UpdateTurnsAndSteps();
+        Debug.Log(string.Format("Completed: {0} Restarts, {1} Turns, {2} Steps", levelRestarts, this.turnsPassed, this.stepsTaken));
+        ResetTurnsAndSteps();
+
         LoadNextLevel();
     }
 
-    public void ImprisonCharacter(int stepsTaken, int turnsPassed)
+    public void ImprisonCharacter()
     {
+        DisableSurrendering();
         levelRestarts += 1;
-        this.stepsTaken += stepsTaken;
-        this.turnsPassed += turnsPassed;
+        UpdateTurnsAndSteps();
         Debug.Log(string.Format("Death: {0} Restarts, {1} Turns, {2} Steps", levelRestarts, this.turnsPassed, this.stepsTaken));
         
         StartCoroutine(ReloadLevel());
@@ -126,13 +142,68 @@ public class SessionManager : MonoBehaviour
         inventory.ClearInventory();
     }
 
+
+    bool surrendering = false;
+
+    float surrenderStart = 0;
+    float surrenderEnd = 0;
+    [SerializeField]
+    float timeToSurrender = 2f;
+    [SerializeField]
+    Button surrenderButton;
+    [SerializeField]
+    Image surrenderProgress;
+
+    public void DisableSurrendering()
+    {
+        surrendering = false;
+        surrenderStart = Time.timeSinceLevelLoad;
+        surrenderButton.interactable = false;
+    }
+
+    public void EnableSurrendering()
+    {
+        surrenderStart = Time.timeSinceLevelLoad;
+        surrenderButton.interactable = true;
+    }
+
     public void SurrenderStart()
     {
-
+        if (surrenderButton.interactable)
+        {
+            surrenderStart = Time.timeSinceLevelLoad;
+            surrendering = true;
+        }
     }
 
     public void SurrenderStop()
     {
+        if (surrenderButton.interactable)
+        {
+            surrenderEnd = Time.timeSinceLevelLoad;
+            surrendering = false;
+        }
+    }
 
+    public void UpdateSurrendering()
+    {
+        float progress = 0f;
+        if (surrendering)
+        {
+            progress = Mathf.Min(1f, (Time.timeSinceLevelLoad - surrenderStart) / timeToSurrender);
+        } else
+        {
+            progress = Mathf.Max(0f, ((surrenderEnd - surrenderStart) - (Time.timeSinceLevelLoad - surrenderEnd)) / timeToSurrender);
+        }
+        surrenderProgress.fillAmount = progress;
+        if (progress == 1f)
+        {
+            ImprisonCharacter();
+        }
+    }
+
+    private void Update()
+    {
+        UpdateSurrendering();
     }
 }
