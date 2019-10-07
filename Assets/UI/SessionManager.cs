@@ -248,4 +248,9 @@ public class SessionManager : MonoBehaviour
         CheckSurrenderHotkeys();
         UpdateSurrendering();
     }
+
+    public void QuitToTitle()
+    {
+        SceneManager.LoadScene("TitleScene");
+    }
 }

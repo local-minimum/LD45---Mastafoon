@@ -17,7 +17,8 @@ public abstract class Enemy : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         location = GetComponentInParent<Location>();
-        FindObjectOfType<EnemyManager>().AddEnemy(this);
+        EnemyManager manager = FindObjectOfType<EnemyManager>();
+        if (manager != null) manager.AddEnemy(this);
         speaker = GetComponent<AudioSource>();
     }
 
