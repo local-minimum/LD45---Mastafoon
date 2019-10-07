@@ -176,6 +176,7 @@ MonoBehaviour:
   - Level 3
   - Level 4
   - Level 5
+  - Level 6
   currentLevel: 1
   inventory: {fileID: 1654044748}
   timeToSurrender: 2
