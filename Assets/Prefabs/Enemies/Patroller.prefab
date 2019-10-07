@@ -103,7 +103,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 20c2e0fe268f0874b8fca5601f7b7320, type: 3}
   moveVolume: 0.5
   captureSounds:
-  - {fileID: 8300000, guid: 9adde2d54d82332419e2c25a1145f510, type: 3}
+  - {fileID: 8300000, guid: 72c1a79161efc734dbcd4cdb85e85525, type: 3}
   captureVolume: 1
   startHeading: {x: 0, y: 1}
   heading: {x: 0, y: 0}
