@@ -16,7 +16,7 @@ public class LevelComplete : Interactable
     {
         if (offset == this.offset)
         {
-            Character character = location.GetComponentInChildren<Character>();
+            FindObjectOfType<WorldClock>().GiveTurnTo(Turn.None);            
             session.ReportLevelCompleted();
             return 1;
         }

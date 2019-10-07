@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LevelSummation : MonoBehaviour
 {
+    [SerializeField] TotalScorer totalScorer;
     [SerializeField] GameObject container;
     [SerializeField] TMPro.TextMeshProUGUI title;
     [SerializeField] TMPro.TextMeshProUGUI capturesValue;
@@ -17,7 +18,7 @@ public class LevelSummation : MonoBehaviour
         container.SetActive(false);
     }
 
-    public void Show(string levelName, LevelStats stats, System.Action<int> reportScore)
+    public void Show(string levelName, LevelStats stats, System.Action callback)
     {
         title.text = levelName;
         capturesValue.text = "";
@@ -25,13 +26,13 @@ public class LevelSummation : MonoBehaviour
         stepsValue.text = "";
         escapeesValue.text = "";
         totalValue.text = "";
-        StartCoroutine(PlayScore(stats, reportScore));
+        StartCoroutine(PlayScore(stats, callback));
     }
 
     [SerializeField] float playScoreDelay = 0.2f;
     [SerializeField] float finalDelay = 3f;
 
-    IEnumerator<WaitForSeconds> PlayScore(LevelStats stats, System.Action<int> reportScore)
+    IEnumerator<WaitForSeconds> PlayScore(LevelStats stats, System.Action callback)
     {
         container.SetActive(true);
         int totalScore = 0;
@@ -59,8 +60,9 @@ public class LevelSummation : MonoBehaviour
         yield return new WaitForSeconds(playScoreDelay);
 
         totalValue.text = totalScore.ToString();
+        totalScorer.AddScore(totalScore);
         yield return new WaitForSeconds(finalDelay);
         container.SetActive(false);
-        reportScore(totalScore);
+        callback();
     }
 }

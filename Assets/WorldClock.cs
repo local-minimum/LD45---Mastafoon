@@ -55,19 +55,25 @@ public class WorldClock : MonoBehaviour
         OnTick?.Invoke(turn, changeOfTurn);
         while (true)
         {
-            yield return new WaitForSeconds(tickTime);            
+            yield return new WaitForSeconds(tickTime);
+            changeOfTurn = turn != nextTurn;
+            turn = nextTurn;
             if (turn != Turn.None) OnTick?.Invoke(turn, changeOfTurn);
             if (turn == Turn.Player && changeOfTurn)
             {
                 turns++;
             }
-            changeOfTurn = turn != nextTurn;
-            turn = nextTurn;
+            
         }
     }
 
-    public void GiveTurnTo(Turn turn)
+    public void GiveTurnTo(Turn nextTurn)
     {
-        nextTurn = turn;
+        this.nextTurn = nextTurn;
+    }
+
+    public void GiveTurnTo(Turn currentTurn, Turn nextTurn)
+    {
+        if (this.nextTurn == currentTurn) GiveTurnTo(nextTurn);
     }
 }

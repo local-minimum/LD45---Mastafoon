@@ -136,7 +136,7 @@ public class Character : MonoBehaviour
         }
         if (actionsInventory.remainingActions == 0)
         {
-            worldClock.GiveTurnTo(Turn.Enemies);
+            worldClock.GiveTurnTo(Turn.Player, Turn.Enemies);
             actionsInventory.SetNotMyTurn();
         }
     }

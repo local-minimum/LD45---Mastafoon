@@ -24,6 +24,7 @@ public class LevelStats
 public class SessionManager : MonoBehaviour
 {
     [SerializeField] LevelSummation levelSummation;
+
     List<LevelStats> levelStats = new List<LevelStats>();
 
     [SerializeField] Animator anim;
@@ -144,8 +145,8 @@ public class SessionManager : MonoBehaviour
         StartCoroutine(ReloadLevel());
     }    
 
-    void LoadNextLevel(int totalScore)
-    {
+    void LoadNextLevel()
+    {  
         inventory.ForgetCharacter();
         inventory.ClearInventory();
         SceneManager.UnloadSceneAsync(levels[currentLevel]);
