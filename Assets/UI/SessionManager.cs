@@ -110,7 +110,9 @@ public class SessionManager : MonoBehaviour
         if (currentLevel < levels.Length)
         {
             SceneManager.LoadScene(levels[currentLevel], LoadSceneMode.Additive);            
-        }        
+        } else {
+            anim.SetTrigger("End");
+        }   
     }
 
     void UpdateTurnsAndSteps()
