@@ -546,7 +546,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Mastafoon
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -574,7 +574,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 26.85
+  m_fontSize: 36
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -615,13 +615,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1256018345}
-    characterCount: 9
+    characterCount: 0
     spriteCount: 0
     spaceCount: 0
-    wordCount: 1
+    wordCount: 0
     linkCount: 0
-    lineCount: 1
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -777,36 +777,57 @@ MonoBehaviour:
     body: <i>Most unfortunate! Once again discarded and locked up!</i><br>Fortunately,
       dispair was not a feeling Mastafoon recognized even if they very well should
       have.
+    priority: 0
+    clearMode: 0
+    clearTime: 0
   - key: cell-door-1
     profilePicture: {fileID: -3254620271776713794, guid: 649de03a7f2a2e041a0e0a8a3524c1f5,
       type: 3}
     characterName: Door
     body: <i>My my! I'm sorry there's no passing through here</i>
+    priority: 0
+    clearMode: 0
+    clearTime: 0
   - key: cell-door-2
     profilePicture: {fileID: -2782341204894616949, guid: 7e40962d17981364c86657d1eebea0e3,
       type: 3}
     characterName: Mastafoon
     body: <i>But you are such a handsome door! Let me tickle your hinges...</i>
+    priority: 0
+    clearMode: 0
+    clearTime: 0
   - key: cell-door-3
     profilePicture: {fileID: -3254620271776713794, guid: 649de03a7f2a2e041a0e0a8a3524c1f5,
       type: 3}
     characterName: Door
-    body: '...<br>...<br><b>*click*</b>'
+    body: <b>*click*</b>
+    priority: 0
+    clearMode: 2
+    clearTime: 2
   - key: patroller-trds-intro
     profilePicture: {fileID: 2731795287329381114, guid: 7e40962d17981364c86657d1eebea0e3,
       type: 3}
     characterName: ToRaaDuS
     body: <i>Scanning...<br>No prisoner in sight
+    priority: 1
+    clearMode: 2
+    clearTime: 3
   - key: spider-intro
     profilePicture: {fileID: -2782341204894616949, guid: 7e40962d17981364c86657d1eebea0e3,
       type: 3}
     characterName: Mastafoon
-    body: <i>Hello friend spider!<br>Why do you have so many legs?<br>And eyes?</i>
+    body: <i>Hello friend spidy-spider!
+    priority: 1
+    clearMode: 2
+    clearTime: 5
   - key: patroller-trds-spider
     profilePicture: {fileID: 2731795287329381114, guid: 7e40962d17981364c86657d1eebea0e3,
       type: 3}
     characterName: Mastafoon
-    body: <i><br>Scanning...<br>Iiih!<br>A spider!</i>
+    body: <i><br>Scanning...<br>Iiih!<br>A sp-spider!</i>
+    priority: 1
+    clearMode: 2
+    clearTime: 3
   profilePicture: {fileID: 1937448065}
   characterName: {fileID: 1256018345}
   body: {fileID: 2015686608}
@@ -1151,7 +1172,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1937448063}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -1239,9 +1260,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: '<i>Most unfortunate! Once again discarded and locked up!</i>
-
-    But dispair was not a feeling they recognized even if they very well should have.'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1310,13 +1329,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 2015686608}
-    characterCount: 135
+    characterCount: 0
     spriteCount: 0
-    spaceCount: 22
-    wordCount: 23
+    spaceCount: 0
+    wordCount: 0
     linkCount: 0
-    lineCount: 7
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
