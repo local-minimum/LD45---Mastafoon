@@ -88,7 +88,15 @@ public class Character : MonoBehaviour
             actionsInventory.SetNotMyTurn();
         }
     }
-    
+
+    [SerializeField] AudioClip pickup;
+    [SerializeField] AudioClip drop;
+
+    public void PlayDrop()
+    {
+        speaker.PlayOneShot(drop);
+    }
+
     void GetMove()
     {
         int actionPoints = actionsInventory.remainingActions;
@@ -127,6 +135,7 @@ public class Character : MonoBehaviour
                 if (item && actionsInventory.canPickUp)
                 {
                     actionsInventory.PickUp(item, location);
+                    speaker.PlayOneShot(pickup);
                 }
             }
         } else

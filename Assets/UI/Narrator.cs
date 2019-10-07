@@ -36,7 +36,16 @@ public class Narrator : MonoBehaviour
     [SerializeField]
     TMPro.TextMeshProUGUI body;
     string mostRecentKey;
-    AudioSource speaker;
+    AudioSource _speaker;
+
+    AudioSource speaker
+    {
+        get
+        {
+            if (_speaker == null) _speaker = GetComponent<AudioSource>();
+            return _speaker;
+        }
+    }
 
     static Narrator _instance;
     public static Narrator instance
@@ -68,11 +77,7 @@ public class Narrator : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        speaker = GetComponent<AudioSource>();
-    }
-
+    
     private void OnDestroy()
     {
         if (_instance == this) _instance = null;

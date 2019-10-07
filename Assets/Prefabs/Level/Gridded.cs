@@ -18,9 +18,9 @@ public class Gridded : MonoBehaviour
 
     void Update()
     {
-        if (snap)
+        if (snap && grid != null)
         {
-            transform.position = grid.GetCellCenterWorld(gridPosition) + grid.cellSize * 0.5f;
+            transform.position = grid.GetCellCenterWorld(gridPosition);
         }
 
     }

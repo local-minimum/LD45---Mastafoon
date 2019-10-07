@@ -97,6 +97,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   messageOnLoad: 
+  pickup: {fileID: 8300000, guid: 57445065a6eb56445a431251a76538c3, type: 3}
+  drop: {fileID: 8300000, guid: d1761c1dd9e63974db6e41da44d80bd1, type: 3}
   audioResting:
   - {fileID: 8300000, guid: 61e31238925af034598baf60a00645e1, type: 3}
   audioMove:

@@ -69,7 +69,7 @@ SpriteRenderer:
   m_SortingLayerID: 1987509777
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: -3254620271776713794, guid: 649de03a7f2a2e041a0e0a8a3524c1f5,
+  m_Sprite: {fileID: -2982174614601005911, guid: 9e7c9ee9f2310304c9b7b37b74ddeef2,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -127,7 +127,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openFrom: {fileID: 0}
   openTo: {fileID: 0}
-  shownWhenOpen: {fileID: 0}
   worldDoor: {fileID: 2702270116458942027}
   roomsToActivate:
   - {fileID: 0}

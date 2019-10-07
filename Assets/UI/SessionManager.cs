@@ -24,6 +24,9 @@ public class LevelStats
 public class SessionManager : MonoBehaviour
 {
     [SerializeField] LevelSummation levelSummation;
+    [SerializeField] AudioSource speakers;
+    [SerializeField] AudioClip closeSound;
+    [SerializeField] AudioClip openSound;
 
     List<LevelStats> levelStats = new List<LevelStats>();
 
@@ -95,6 +98,7 @@ public class SessionManager : MonoBehaviour
         WorldClock worldClock = FindObjectOfType<WorldClock>();
         worldClock.GiveTurnTo(Turn.None);
         yield return new WaitForSeconds(delayOpen);
+        speakers.PlayOneShot(openSound);
         anim.SetTrigger("Open");
         worldClock.GiveTurnTo(Turn.Player);
         EnableSurrendering();
@@ -126,6 +130,7 @@ public class SessionManager : MonoBehaviour
     public void ReportLevelCompleted()
     {
         DisableSurrendering();
+        speakers.PlayOneShot(closeSound);
         anim.SetTrigger("Close");
         UpdateTurnsAndSteps();
         int escapes = 1 + inventory.itemCount;
@@ -156,8 +161,9 @@ public class SessionManager : MonoBehaviour
 
     IEnumerator<WaitForSeconds> ReloadLevel()
     {
-        delayOpen = 2f;
+        delayOpen = 2f;        
         yield return new WaitForSeconds(1f);
+        speakers.PlayOneShot(closeSound);
         anim.SetTrigger("Jail");
         SceneManager.UnloadSceneAsync(levels[currentLevel]);
         inventory.ForgetCharacter();

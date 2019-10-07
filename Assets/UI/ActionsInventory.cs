@@ -112,6 +112,7 @@ public class ActionsInventory : MonoBehaviour
             if (location.canPlaceItem)
             {
                 location.PlaceItem(slot.DropItem());
+                character.PlayDrop();
                 Item currentItem = null;
                 Item nextItem = null;
                 for (int action = 0; action <= slots.Length; action ++)
