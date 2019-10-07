@@ -7,8 +7,7 @@ public enum LiveUpdate { LocationToPosition, PositionToLocation, None}
 [ExecuteInEditMode]
 public class Location : MonoBehaviour
 {
-    WorldClock worldClock;
-    Interactable interactable;
+    WorldClock worldClock;    
 
     [SerializeField] LiveUpdate updateMode;
     Item item;
@@ -103,9 +102,17 @@ public class Location : MonoBehaviour
         return null;
     }
 
+    public Interactable interactable
+    {
+        get
+        {
+            return GetComponentInChildren<Interactable>();
+        }
+    }
+
     public int Interact(Vector2Int offset)
     {
-        if (interactable)
+        if (interactable && offset.magnitude > 0)
         {
             return interactable.Activate(this, offset);
         }
@@ -244,19 +251,13 @@ public class Location : MonoBehaviour
     {
 #if UNITY_EDITOR
         Position();
-        Interactable interactable = GetComponentInChildren<Interactable>();
-        if (interactable && interactable != this.interactable)
+        Interactable interactable = this.interactable;
+        if (GetComponentsInChildren<Interactable>().Length > 1)
         {
-            if (this.interactable)
-            {
-                Debug.LogError(string.Format("{0} has more than one interactable", name));
-            } else
-            {
-                this.interactable = interactable;
-                interactable.transform.localPosition = Vector3.zero;
-            }
-        } else if (interactable == null && this.interactable) {
-            this.interactable = null;
+            Debug.LogError(string.Format("{0} has more than one interactable", name));
+        } else if (interactable != null)
+        {
+            interactable.transform.localPosition = Vector3.zero;
         }
         Item item = GetComponentInChildren<Item>();
         if (item && item != this.item)
