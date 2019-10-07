@@ -207,15 +207,25 @@ public class Location : MonoBehaviour
         {
             character.transform.SetParent(transform);
             character.transform.localPosition = Vector3.zero;
-            Environmentals[] envs = GetComponentsInChildren<Environmentals>();
-            for (int i=0; i<envs.Length; i++)
-            {
-                if (envs[i].isDangerous)
-                {
-                    CaptureCharacter();
-                }
-            }
+            CheckEnvironmentalCapture();
             return true;
+        }
+        return false;
+    }
+
+    bool hasCaptured = false;
+    public bool CheckEnvironmentalCapture()
+    {
+        if (hasCaptured) return true;
+        Environmentals[] envs = GetComponentsInChildren<Environmentals>();
+        for (int i = 0; i < envs.Length; i++)
+        {
+            if (envs[i].isDangerous)
+            {
+                hasCaptured = true;
+                CaptureCharacter();
+                return true;
+            }
         }
         return false;
     }

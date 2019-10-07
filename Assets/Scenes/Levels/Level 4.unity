@@ -897,6 +897,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8870747338488002877, guid: 7590694847dfa9048b9202f57d29c173,
+        type: 3}
+      propertyPath: messageOnLoad
+      value: mastafoon-lvl4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7590694847dfa9048b9202f57d29c173, type: 3}
 --- !u!1 &572639086

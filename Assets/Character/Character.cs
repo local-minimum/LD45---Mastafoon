@@ -125,6 +125,7 @@ public class Character : MonoBehaviour
         Location nextLocation = location.GetNeighbour(offset);
         if (nextLocation)
         {
+            if (location.CheckEnvironmentalCapture()) return;
             if (nextLocation.PlaceCharacter(this))
             {
                 speaker.PlayOneShot(audioMove[Random.Range(0, audioResting.Length)], audioVolumeOwnTurn);
