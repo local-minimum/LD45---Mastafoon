@@ -19,6 +19,8 @@ public class StoryPiece
     public StoryPriority priority;
     public StoryClearMode clearMode;
     public float clearTime;
+    public AudioClip audio;
+    public float audioVolume = 1f;
 }
 
 
@@ -34,6 +36,7 @@ public class Narrator : MonoBehaviour
     [SerializeField]
     TMPro.TextMeshProUGUI body;
     string mostRecentKey;
+    AudioSource speaker;
 
     static Narrator _instance;
     public static Narrator instance
@@ -63,6 +66,11 @@ public class Narrator : MonoBehaviour
             Debug.LogError(string.Format("Two narrators active (keeping {0}, destroying {1})", _instance, this));
             Destroy(this);
         }
+    }
+
+    private void Start()
+    {
+        speaker = GetComponent<AudioSource>();
     }
 
     private void OnDestroy()
@@ -102,7 +110,7 @@ public class Narrator : MonoBehaviour
     IEnumerator<WaitForSeconds> _DisplayPiece(StoryPiece piece)
     {
         if (currentlyShowing != null) yield return new WaitForSeconds(0.5f);
-
+        if (piece.audio) speaker.PlayOneShot(piece.audio, piece.audioVolume);
         currentlyShowing = piece;
         characterName.text = piece.characterName;
         body.text = piece.body;
