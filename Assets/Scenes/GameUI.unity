@@ -892,7 +892,7 @@ PrefabInstance:
       objectReference: {fileID: 392465398}
     - target: {fileID: 1672176694, guid: 4a3b774e33058d44eb1d891892158192, type: 3}
       propertyPath: pieces.Array.size
-      value: 10
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1672176694, guid: 4a3b774e33058d44eb1d891892158192, type: 3}
       propertyPath: pieces.Array.data[7].key
@@ -921,7 +921,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1672176694, guid: 4a3b774e33058d44eb1d891892158192, type: 3}
       propertyPath: pieces.Array.data[7].clearTime
-      value: 10
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 1672176694, guid: 4a3b774e33058d44eb1d891892158192, type: 3}
       propertyPath: pieces.Array.data[7].audio
@@ -963,7 +963,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1672176694, guid: 4a3b774e33058d44eb1d891892158192, type: 3}
       propertyPath: pieces.Array.data[8].clearTime
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1672176694, guid: 4a3b774e33058d44eb1d891892158192, type: 3}
       propertyPath: pieces.Array.data[9].key
@@ -980,8 +980,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1672176694, guid: 4a3b774e33058d44eb1d891892158192, type: 3}
       propertyPath: pieces.Array.data[9].body
-      value: <i>We better not let that charge run through our body...<br>...though
-        it might be a sweet tickle...</i>
+      value: <i>We better not let that charge run through our body!<br>Though...<br>It
+        might be a sweet tickle...</i>
       objectReference: {fileID: 0}
     - target: {fileID: 1672176694, guid: 4a3b774e33058d44eb1d891892158192, type: 3}
       propertyPath: pieces.Array.data[9].clearMode
@@ -989,7 +989,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1672176694, guid: 4a3b774e33058d44eb1d891892158192, type: 3}
       propertyPath: pieces.Array.data[9].clearTime
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1672176694, guid: 4a3b774e33058d44eb1d891892158192, type: 3}
       propertyPath: pieces.Array.data[9].audio
@@ -998,6 +998,95 @@ PrefabInstance:
     - target: {fileID: 1672176694, guid: 4a3b774e33058d44eb1d891892158192, type: 3}
       propertyPath: pieces.Array.data[9].audioVolume
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1672176694, guid: 4a3b774e33058d44eb1d891892158192, type: 3}
+      propertyPath: pieces.Array.data[10].key
+      value: mastafoon-lvl5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1672176694, guid: 4a3b774e33058d44eb1d891892158192, type: 3}
+      propertyPath: pieces.Array.data[10].profilePicture
+      value: 
+      objectReference: {fileID: -2782341204894616949, guid: 7e40962d17981364c86657d1eebea0e3,
+        type: 3}
+    - target: {fileID: 1672176694, guid: 4a3b774e33058d44eb1d891892158192, type: 3}
+      propertyPath: pieces.Array.data[10].characterName
+      value: Mastafoon
+      objectReference: {fileID: 0}
+    - target: {fileID: 1672176694, guid: 4a3b774e33058d44eb1d891892158192, type: 3}
+      propertyPath: pieces.Array.data[10].body
+      value: <i>Who is that sexy arch?<br>If only we could have met under better circumstances</i>
+      objectReference: {fileID: 0}
+    - target: {fileID: 1672176694, guid: 4a3b774e33058d44eb1d891892158192, type: 3}
+      propertyPath: pieces.Array.data[10].clearMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1672176694, guid: 4a3b774e33058d44eb1d891892158192, type: 3}
+      propertyPath: pieces.Array.data[10].clearTime
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1672176694, guid: 4a3b774e33058d44eb1d891892158192, type: 3}
+      propertyPath: pieces.Array.data[10].audio
+      value: 
+      objectReference: {fileID: 8300000, guid: 60bf5a441ab5f5341bf232aec84e7756, type: 3}
+    - target: {fileID: 1672176694, guid: 4a3b774e33058d44eb1d891892158192, type: 3}
+      propertyPath: pieces.Array.data[10].audioVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1672176694, guid: 4a3b774e33058d44eb1d891892158192, type: 3}
+      propertyPath: pieces.Array.data[11].key
+      value: mastafoon-lvl6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1672176694, guid: 4a3b774e33058d44eb1d891892158192, type: 3}
+      propertyPath: pieces.Array.data[11].profilePicture
+      value: 
+      objectReference: {fileID: -2782341204894616949, guid: 7e40962d17981364c86657d1eebea0e3,
+        type: 3}
+    - target: {fileID: 1672176694, guid: 4a3b774e33058d44eb1d891892158192, type: 3}
+      propertyPath: pieces.Array.data[11].characterName
+      value: Mastafoon
+      objectReference: {fileID: 0}
+    - target: {fileID: 1672176694, guid: 4a3b774e33058d44eb1d891892158192, type: 3}
+      propertyPath: pieces.Array.data[11].body
+      value: <i>We can smell all the unconquered stars from here!<br>This must be
+        the final teleporter.</i>
+      objectReference: {fileID: 0}
+    - target: {fileID: 1672176694, guid: 4a3b774e33058d44eb1d891892158192, type: 3}
+      propertyPath: pieces.Array.data[11].clearMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1672176694, guid: 4a3b774e33058d44eb1d891892158192, type: 3}
+      propertyPath: pieces.Array.data[11].clearTime
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1672176694, guid: 4a3b774e33058d44eb1d891892158192, type: 3}
+      propertyPath: pieces.Array.data[11].audio
+      value: 
+      objectReference: {fileID: 8300000, guid: 60bf5a441ab5f5341bf232aec84e7756, type: 3}
+    - target: {fileID: 1672176694, guid: 4a3b774e33058d44eb1d891892158192, type: 3}
+      propertyPath: pieces.Array.data[11].audioVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1672176694, guid: 4a3b774e33058d44eb1d891892158192, type: 3}
+      propertyPath: pieces.Array.data[1].audio
+      value: 
+      objectReference: {fileID: 8300000, guid: a48d241d2d98b6c42ad11dabb3fafd1a, type: 3}
+    - target: {fileID: 1672176694, guid: 4a3b774e33058d44eb1d891892158192, type: 3}
+      propertyPath: pieces.Array.data[2].audio
+      value: 
+      objectReference: {fileID: 8300000, guid: 60bf5a441ab5f5341bf232aec84e7756, type: 3}
+    - target: {fileID: 1672176694, guid: 4a3b774e33058d44eb1d891892158192, type: 3}
+      propertyPath: pieces.Array.data[0].body
+      value: <i>Most unfortunate!<br>Once again discarded and locked up!</i><br>Fortunately,
+        dispair was not a feeling Mastafoon recognized even if they very well should
+        have.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2015686608, guid: 4a3b774e33058d44eb1d891892158192, type: 3}
+      propertyPath: m_textAlignment
+      value: 257
+      objectReference: {fileID: 0}
+    - target: {fileID: 2015686608, guid: 4a3b774e33058d44eb1d891892158192, type: 3}
+      propertyPath: m_paragraphSpacing
+      value: 45
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a3b774e33058d44eb1d891892158192, type: 3}
