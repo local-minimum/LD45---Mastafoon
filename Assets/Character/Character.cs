@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    WorldClock worldClock;
+    WorldClock _worldClock;
     [SerializeField] string messageOnLoad;
-    ActionsInventory actionsInventory;
+    ActionsInventory _actionsInventory;
     Narrator narrator;
     Location location;
     int steps = 0;
@@ -24,6 +24,30 @@ public class Character : MonoBehaviour
         return location;
     }
 
+    WorldClock worldClock
+    {
+        get
+        {
+            if (_worldClock == null)
+            {
+                _worldClock = FindObjectOfType<WorldClock>();
+            }
+            return _worldClock;
+        }
+    }
+
+    ActionsInventory actionsInventory
+    {
+        get
+        {
+            if (_actionsInventory == null)
+            {
+                _actionsInventory = FindObjectOfType<ActionsInventory>();
+            }
+            return _actionsInventory;
+        }
+    }
+
     void Start()
     {       
         location = GetComponentInParent<Location>();
@@ -33,14 +57,12 @@ public class Character : MonoBehaviour
 
     private void OnEnable()
     {
-        if (actionsInventory == null) actionsInventory = FindObjectOfType<ActionsInventory>();
-        if (worldClock == null) worldClock = FindObjectOfType<WorldClock>();
         worldClock.OnTick += WorldClock_OnTick;
     }
 
     private void OnDisable()
     {
-        worldClock.OnTick -= WorldClock_OnTick;
+        if (worldClock != null) worldClock.OnTick -= WorldClock_OnTick;
     }
 
     bool myTurn = false;

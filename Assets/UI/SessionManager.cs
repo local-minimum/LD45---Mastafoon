@@ -54,7 +54,8 @@ public class SessionManager : MonoBehaviour
                 if (lvlScene.isLoaded)
                 {
                     currentLevel = i;
-                    Debug.Log(string.Format("Playing on: {0}", lvl));                    
+                    Debug.Log(string.Format("Playing on: {0}", lvl));
+                    StartCoroutine(DelayOpenScene());
                     return;
                 }
             }
@@ -123,5 +124,15 @@ public class SessionManager : MonoBehaviour
         SceneManager.UnloadSceneAsync(levels[currentLevel]);
         inventory.ForgetCharacter();
         inventory.ClearInventory();
+    }
+
+    public void SurrenderStart()
+    {
+
+    }
+
+    public void SurrenderStop()
+    {
+
     }
 }

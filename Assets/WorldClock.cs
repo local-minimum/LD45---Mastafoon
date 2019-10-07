@@ -13,7 +13,7 @@ public class WorldClock : MonoBehaviour
     Turn nextTurn = Turn.None;
 
     [SerializeField] float tickTime = 3f;
-    int turns = 1;
+    int turns = 0;
 
     [SerializeField, Tooltip("Only evaluates to 1s")]
     AnimationCurve _enemyMoveEase;
@@ -57,7 +57,10 @@ public class WorldClock : MonoBehaviour
         {
             yield return new WaitForSeconds(tickTime);            
             if (turn != Turn.None) OnTick?.Invoke(turn, changeOfTurn);
-            if (turn == Turn.Player && changeOfTurn) turns++;            
+            if (turn == Turn.Player && changeOfTurn)
+            {
+                turns++;
+            }
             changeOfTurn = turn != nextTurn;
             turn = nextTurn;
         }
