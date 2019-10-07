@@ -9,6 +9,7 @@ public class Character : MonoBehaviour
     ActionsInventory _actionsInventory;
     Narrator narrator;
     Location location;
+    AudioSource speaker;
     int steps = 0;
 
     public int stepsTaken
@@ -53,6 +54,7 @@ public class Character : MonoBehaviour
         location = GetComponentInParent<Location>();
         location.PlaceCharacter(this);
         if (!string.IsNullOrEmpty(messageOnLoad)) Narrator.ShowPieceByKey(messageOnLoad);
+        StartCoroutine(AudioSequencer());
     }
 
     private void OnEnable()
@@ -117,6 +119,7 @@ public class Character : MonoBehaviour
         {
             if (nextLocation.PlaceCharacter(this))
             {
+                speaker.PlayOneShot(audioMove[Random.Range(0, audioResting.Length)], audioVolumeOwnTurn);
                 location = nextLocation;
                 actionsInventory.UseAction();
                 steps++;
@@ -135,6 +138,28 @@ public class Character : MonoBehaviour
         {
             worldClock.GiveTurnTo(Turn.Enemies);
             actionsInventory.SetNotMyTurn();
+        }
+    }
+
+    [SerializeField]
+    AudioClip[] audioResting;
+    [SerializeField]
+    AudioClip[] audioMove;
+    [SerializeField]
+    float audioVolumeOwnTurn = 1f;
+    [SerializeField]
+    float audioVolumeOtherTurn = 0.5f;
+
+    IEnumerator<WaitForSeconds> AudioSequencer()
+    {
+        speaker = GetComponent<AudioSource>();
+        while (true)
+        {             
+            if (!speaker.isPlaying)
+            {
+                speaker.PlayOneShot(audioResting[Random.Range(0, audioResting.Length)], myTurn ? audioVolumeOwnTurn : audioVolumeOtherTurn);
+            }   
+            yield return new WaitForSeconds(0.02f);
         }
     }
 

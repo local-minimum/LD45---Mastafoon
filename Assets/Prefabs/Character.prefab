@@ -97,6 +97,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   messageOnLoad: 
+  audioResting:
+  - {fileID: 8300000, guid: 61e31238925af034598baf60a00645e1, type: 3}
+  audioMove:
+  - {fileID: 8300000, guid: 4b1e3295b2a348b44bece35b5de641a4, type: 3}
+  - {fileID: 8300000, guid: 60bf5a441ab5f5341bf232aec84e7756, type: 3}
+  audioVolumeOwnTurn: 0.7
+  audioVolumeOtherTurn: 0.1
 --- !u!95 &1187554066901865342
 Animator:
   serializedVersion: 3
@@ -130,7 +137,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
