@@ -32,6 +32,14 @@ public class ActionInventorySlot : MonoBehaviour
         }
     }
 
+    public bool hasItem
+    {
+        get
+        {
+            return item != null;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {

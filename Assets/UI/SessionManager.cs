@@ -4,8 +4,28 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+[System.Serializable]
+public class LevelStats
+{
+    public int steps;
+    public int turns;
+    public int captures;
+    public int escapees;
+
+    public LevelStats(int steps, int turns, int captures, int escapes)
+    {
+        this.steps = steps;
+        this.turns = turns;
+        this.captures = captures;
+        this.escapees = escapes;
+    }
+}
+
 public class SessionManager : MonoBehaviour
 {
+    [SerializeField] LevelSummation levelSummation;
+    List<LevelStats> levelStats = new List<LevelStats>();
+
     [SerializeField] Animator anim;
     [SerializeField]
     string[] levels;
@@ -16,7 +36,7 @@ public class SessionManager : MonoBehaviour
 
     int levelRestarts;
     int stepsTaken;
-    int turnsPassed;    
+    int turnsPassed;
 
     private void OnEnable()
     {
@@ -107,10 +127,11 @@ public class SessionManager : MonoBehaviour
         DisableSurrendering();
         anim.SetTrigger("Close");
         UpdateTurnsAndSteps();
-        Debug.Log(string.Format("Completed: {0} Restarts, {1} Turns, {2} Steps", levelRestarts, this.turnsPassed, this.stepsTaken));
+        int escapes = 1 + inventory.itemCount;
+        LevelStats stats = new LevelStats(stepsTaken, turnsPassed, levelRestarts, escapes);
+        levelStats.Add(stats);        
         ResetTurnsAndSteps();
-
-        LoadNextLevel();
+        levelSummation.Show(levels[currentLevel], stats, LoadNextLevel);
     }
 
     public void ImprisonCharacter()
@@ -123,12 +144,12 @@ public class SessionManager : MonoBehaviour
         StartCoroutine(ReloadLevel());
     }    
 
-    void LoadNextLevel()
+    void LoadNextLevel(int totalScore)
     {
         inventory.ForgetCharacter();
         inventory.ClearInventory();
         SceneManager.UnloadSceneAsync(levels[currentLevel]);
-        delayOpen = 1.5f;
+        delayOpen = 0.5f;
         currentLevel++;
     }
 

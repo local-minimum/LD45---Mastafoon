@@ -178,4 +178,17 @@ public class ActionsInventory : MonoBehaviour
         }
         endTurnButton.interactable = false;
     }
+
+    public int itemCount
+    {
+        get
+        {
+            int items = 0;
+            for (int action = 0; action < slots.Length; action++)
+            {
+                items += slots[action].hasItem ? 1 : 0;
+            }
+            return items;
+        }
+    }
 }
