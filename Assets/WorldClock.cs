@@ -10,7 +10,7 @@ public class WorldClock : MonoBehaviour
 {
     public event TickEvent OnTick;
     Turn turn = Turn.None;
-    Turn nextTurn = Turn.Player;
+    Turn nextTurn = Turn.None;
 
     [SerializeField] float tickTime = 3f;
     int turns = 1;
@@ -51,13 +51,15 @@ public class WorldClock : MonoBehaviour
     }
 
     IEnumerator<WaitForSeconds> ticker() {
+        bool changeOfTurn = true;
+        OnTick?.Invoke(turn, changeOfTurn);
         while (true)
         {
-            yield return new WaitForSeconds(tickTime);
-            bool changeOfTurn = turn != nextTurn;
-            turn = nextTurn;
-            OnTick?.Invoke(turn, changeOfTurn);
+            yield return new WaitForSeconds(tickTime);            
+            if (turn != Turn.None) OnTick?.Invoke(turn, changeOfTurn);
             if (turn == Turn.Player && changeOfTurn) turns++;            
+            changeOfTurn = turn != nextTurn;
+            turn = nextTurn;
         }
     }
 

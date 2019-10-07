@@ -165,7 +165,7 @@ public class ActionsInventory : MonoBehaviour
         endTurnButton.interactable = true;
     }
 
-    public void EnemyTurn()
+    public void SetNotMyTurn()
     {
         foreground.color = inactiveColor;
     }

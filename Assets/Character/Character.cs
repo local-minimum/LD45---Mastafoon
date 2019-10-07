@@ -25,8 +25,7 @@ public class Character : MonoBehaviour
     }
 
     void Start()
-    {
-        actionsInventory = FindObjectOfType<ActionsInventory>();
+    {       
         location = GetComponentInParent<Location>();
         location.PlaceCharacter(this);
         if (!string.IsNullOrEmpty(messageOnLoad)) Narrator.ShowPieceByKey(messageOnLoad);
@@ -34,6 +33,7 @@ public class Character : MonoBehaviour
 
     private void OnEnable()
     {
+        if (actionsInventory == null) actionsInventory = FindObjectOfType<ActionsInventory>();
         if (worldClock == null) worldClock = FindObjectOfType<WorldClock>();
         worldClock.OnTick += WorldClock_OnTick;
     }
@@ -43,18 +43,26 @@ public class Character : MonoBehaviour
         worldClock.OnTick -= WorldClock_OnTick;
     }
 
-
+    bool myTurn = false;
     private void WorldClock_OnTick(Turn turn, bool changeOfTurn)
     {
 
         if (turn == Turn.Player)
         {
+            Debug.Log(changeOfTurn);
             if (changeOfTurn) actionsInventory.NewTurn();
             if (actionsInventory.remainingActions == 0)
             {
                 worldClock.GiveTurnTo(Turn.Enemies);
-                actionsInventory.EnemyTurn();
+                actionsInventory.SetNotMyTurn();
+                myTurn = false;
+            } else
+            {
+                myTurn = true;
             }
+        } else if (turn == Turn.None && changeOfTurn)
+        {
+            actionsInventory.SetNotMyTurn();
         }
     }
     
@@ -105,12 +113,12 @@ public class Character : MonoBehaviour
         if (actionsInventory.remainingActions == 0)
         {
             worldClock.GiveTurnTo(Turn.Enemies);
-            actionsInventory.EnemyTurn();
+            actionsInventory.SetNotMyTurn();
         }
     }
 
     void Update()
     {
-        GetMove();
+        if (myTurn) GetMove();
     }
 }

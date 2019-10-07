@@ -69,7 +69,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1765402717
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -8312420563691395660, guid: 649de03a7f2a2e041a0e0a8a3524c1f5,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -94,6 +94,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3391ce7446d4c7945a3f2a92be705757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  narrateOnTurn: 
+  probabilityToNarrate: 0
   actionsPerTurn: 5
   beaconSequence:
   - {fileID: 0}

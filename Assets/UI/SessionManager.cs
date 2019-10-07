@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SessionManager : MonoBehaviour
 {
+    [SerializeField] Animator anim;
     [SerializeField]
     string[] levels;
 
@@ -15,11 +16,6 @@ public class SessionManager : MonoBehaviour
     int levelRestarts;
     int stepsTaken;
     int turnsPassed;
-
-    private void Awake()
-    {
- 
-    }
 
     private void OnEnable()
     {
@@ -44,6 +40,7 @@ public class SessionManager : MonoBehaviour
                 currentLevel = i;
                 inventory.NewTurn();
                 Debug.Log(string.Format("Loaded level: {0}", lvl));
+                StartCoroutine(DelayOpenScene());
                 return;
             }
         }
@@ -57,7 +54,7 @@ public class SessionManager : MonoBehaviour
                 if (lvlScene.isLoaded)
                 {
                     currentLevel = i;
-                    Debug.Log(string.Format("Playing on: {0}", lvl));
+                    Debug.Log(string.Format("Playing on: {0}", lvl));                    
                     return;
                 }
             }
@@ -65,6 +62,17 @@ public class SessionManager : MonoBehaviour
             return;
         }
         Debug.LogWarning(string.Format("Unhandled Scene {0}, forgot to add to SessionManager.levels?", scene.name));
+    }
+
+    float delayOpen = 1f;
+
+    IEnumerator<WaitForSeconds> DelayOpenScene()
+    {
+        WorldClock worldClock = FindObjectOfType<WorldClock>();
+        worldClock.GiveTurnTo(Turn.None);
+        yield return new WaitForSeconds(delayOpen);
+        anim.SetTrigger("Open");
+        worldClock.GiveTurnTo(Turn.Player);
     }
 
     private void SceneManager_sceneUnloaded(Scene scene)
@@ -78,6 +86,7 @@ public class SessionManager : MonoBehaviour
 
     public void ReportLevelCompleted(int stepsTaken, int turnsPassed)
     {
+        anim.SetTrigger("Close");
         this.stepsTaken += stepsTaken;
         this.turnsPassed += turnsPassed;
         Debug.Log(string.Format("Completed: {0} Restarts, {1} Turns, {2} Steps", levelRestarts, this.turnsPassed, this.stepsTaken));
@@ -87,13 +96,14 @@ public class SessionManager : MonoBehaviour
         LoadNextLevel();
     }
 
-    public void KillCharacter(int stepsTaken, int turnsPassed)
+    public void ImprisonCharacter(int stepsTaken, int turnsPassed)
     {
+        anim.SetTrigger("Jail");
         levelRestarts += 1;
         this.stepsTaken += stepsTaken;
         this.turnsPassed += turnsPassed;
         Debug.Log(string.Format("Death: {0} Restarts, {1} Turns, {2} Steps", levelRestarts, this.turnsPassed, this.stepsTaken));
-
+        delayOpen = 0;
         ReloadLevel();
     }
 
@@ -102,6 +112,7 @@ public class SessionManager : MonoBehaviour
         inventory.ForgetCharacter();
         inventory.ClearInventory();
         SceneManager.UnloadSceneAsync(levels[currentLevel]);
+        delayOpen = 1.5f;
         currentLevel++;
     }
 

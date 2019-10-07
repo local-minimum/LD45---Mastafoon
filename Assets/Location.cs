@@ -217,7 +217,7 @@ public class Location : MonoBehaviour
     {
         int turns = FindObjectOfType<WorldClock>().turnsTaken;
         int steps = GetComponentInChildren<Character>().stepsTaken;
-        FindObjectOfType<SessionManager>().KillCharacter(steps, turns);
+        FindObjectOfType<SessionManager>().ImprisonCharacter(steps, turns);
     }
 
     public void Position()
