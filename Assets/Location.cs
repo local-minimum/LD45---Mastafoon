@@ -168,13 +168,13 @@ public class Location : MonoBehaviour
     bool hasEnemyOrCharacter(Enemy enemy)
     {
         Enemy existing = GetComponentInChildren<Enemy>();
-        return GetComponentInChildren<Character>() || existing != null && existing != enemy;        
+        return hasCharacter || existing != null && existing != enemy;        
     }
 
     bool hasEnemyOrCharacter(Character character)
     {
         Character existing = GetComponentInChildren<Character>();
-        return GetComponentInChildren<Enemy>() || existing != null && existing != character;
+        return hasEnemy || existing != null && existing != character;
     }
 
 
@@ -183,6 +183,14 @@ public class Location : MonoBehaviour
         get
         {
             return GetComponentInChildren<Character>();
+        }
+    }
+
+    public bool hasEnemy
+    {
+        get
+        {
+            return GetComponentInChildren<Enemy>();
         }
     }
 
