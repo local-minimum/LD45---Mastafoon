@@ -106,7 +106,7 @@ public class ActionsInventory : MonoBehaviour
 
     public void AttemptDrop(ActionInventorySlot slot)
     {
-        if (remainingActions > 0)
+        if (remainingActions > 0 && slot.hasItem)
         {
             Location location = character.GetLocation();
             if (location.canPlaceItem)
