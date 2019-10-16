@@ -91,6 +91,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2702270117792430030}
   - component: {fileID: 2702270117792430017}
+  - component: {fileID: 2210366729668308945}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -136,3 +137,23 @@ MonoBehaviour:
   - cell-door-1
   - cell-door-2
   - cell-door-3
+  anim: {fileID: 0}
+--- !u!95 &2210366729668308945
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2702270117792430031}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 005e4adcf9a6a1b4e965a4ffc214c915, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

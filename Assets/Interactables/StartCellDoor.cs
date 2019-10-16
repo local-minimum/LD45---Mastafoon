@@ -11,21 +11,25 @@ public class StartCellDoor : Interactable
     [SerializeField] GameObject[] roomsToActivate;
     [SerializeField] string[] dialogues;
     int dialgueIndex = 0;
+    [SerializeField] Animator anim;
 
     private void Awake()
     {
+        anim = GetComponent<Animator>();
         worldDoor.SetActive(isClosed);
         for (int i=0; i<roomsToActivate.Length; i++)
         {
             roomsToActivate[i].SetActive(!isClosed);
         }
     }
+
     public override int Activate(Location location, Vector2Int offset)
     {
         if (isClosed && location == openFrom && offset == Vector2Int.right)
         {
             if (dialgueIndex < dialogues.Length)
             {
+                anim.SetTrigger("EnterCharacter");
                 Narrator.ShowPieceByKey(dialogues[dialgueIndex]);
                 dialgueIndex++;
             } else
@@ -51,5 +55,10 @@ public class StartCellDoor : Interactable
             Gizmos.color = Color.red;
             Gizmos.DrawLine(openFrom.transform.position, openTo.transform.position);
         }
+    }
+
+    void OnEnterCharacter()
+    {
+        anim.SetTrigger("EnterCharacter");
     }
 }
