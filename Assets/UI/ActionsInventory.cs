@@ -20,11 +20,16 @@ public class ActionsInventory : MonoBehaviour
 
     private void Update()
     {
+        UpdateEndTurnStatus();
         if (endTurnButton.interactable)
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                EndTurn();
+                EndTurnStart();
+            }
+            else if (Input.GetKeyUp(KeyCode.E))
+            {
+                EndTurnStop();
             }
             else if (Input.GetKeyDown(KeyCode.Alpha1))
             {
@@ -178,6 +183,50 @@ public class ActionsInventory : MonoBehaviour
             slots[action].UseActionPoint();
         }
         endTurnButton.interactable = false;
+        endingTurn = false;
+        endTurnStart = endTurnEnd;
+    }
+
+    bool endingTurn;
+    float endTurnStart;
+    float endTurnEnd;
+    [SerializeField, Range(0, 5)] float timeToEndTurn = 1.5f;
+    [SerializeField] Image endProgress;
+
+    public void EndTurnStart()
+    {        
+        if (endTurnButton.interactable)
+        {
+            endTurnStart = Time.timeSinceLevelLoad - Mathf.Max(0f, ((endTurnEnd - endTurnStart) - (Time.timeSinceLevelLoad - endTurnEnd)) / timeToEndTurn);
+            endingTurn = true;
+        }
+    }
+
+    public void EndTurnStop()
+    {
+        if (endTurnButton.interactable)
+        {
+            endTurnEnd = Time.timeSinceLevelLoad;
+            endingTurn = false;
+        }
+    }
+
+    public void UpdateEndTurnStatus()
+    {
+        float progress = 0f;
+        if (endingTurn)
+        {
+            progress = Mathf.Min(1f, (Time.timeSinceLevelLoad - endTurnStart) / timeToEndTurn);
+        }
+        else
+        {
+            progress = Mathf.Max(0f, ((endTurnEnd - endTurnStart) - (Time.timeSinceLevelLoad - endTurnEnd)) / timeToEndTurn);
+        }
+        endProgress.fillAmount = progress;
+        if (progress == 1f)
+        {
+            EndTurn();
+        }
     }
 
     public int itemCount
